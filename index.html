@@ -69,7 +69,7 @@
            <p id="hintBoxText"> Hint Loaded Here </p>
             <button id="hintBoxOK", class="dlgBtn"> OK </button>
         </dialog>
-        <dialog id="noGameLoaded">
+        <dialog id="noGameLoaded" data-testid="noGameLoaded">
             No Game Board is loaded. Generate a random one now?
             <button id="btnConfirmRandomNew", class="dlgBtn">
                 Yes
@@ -78,7 +78,7 @@
                 No
             </button>
         </dialog>
-        <dialog id="selectPlayerCount">
+        <dialog id="selectPlayerCount" data-testid="selectPlayerCount">
             Select Number of Players
             <button id="btnThreePlayers", class="dlgBtn">
                 Three (3)
@@ -102,7 +102,7 @@
             </section>
         </dialog>
         <dialog id="selectHexItem", data-testid="selectHexItem">
-            <section id="hexBuildings">
+            <section id="hexBuildings" data-testid="secHexBuildings">
             Buildings
             <section id="whiteBuilds", class="optButtons">
                 <button id="btnWhiteStone" data-testid="btnWhiteStone", class="dlgBtn">
@@ -147,44 +147,44 @@
                 <button id="btnP1Cube" data-testid="btnP1Cube", class="dlgBtn">
                     Player 1 Cube
                 </button>
-                <button id="btnP1Disk", class="dlgBtn">
+                <button id="btnP1Disk" data-testid="btnP1Disk", class="dlgBtn">
                     Player 1 Disk
                 </button>   
             </section>
-            <section id="p2Tokens", class="optButtons">
-                <button id="btnP2Cube", class="dlgBtn">
+            <section id="p2Tokens" , class="optButtons">
+                <button id="btnP2Cube" data-testid="btnP2Cube", class="dlgBtn">
                     Player 2 Cube
                 </button>
-                <button id="btnP2Disk", class="dlgBtn">
+                <button id="btnP2Disk" data-testid="btnP2Disk", class="dlgBtn">
                     Player 2 Disk
                 </button>   
             </section>
             <section id="p3Tokens", class="optButtons">
-                <button id="btnP3Cube", class="dlgBtn">
+                <button id="btnP3Cube" data-testid="btnP3Cube", class="dlgBtn">
                     Player 3 Cube
                 </button>
-                <button id="btnP3Disk", class="dlgBtn">
+                <button id="btnP3Disk" data-testid="btnP3Disk", class="dlgBtn">
                     Player 3 Disk
                 </button>   
             </section>
             <section id="p4Tokens", class="optButtons">
-                <button id="btnP4Cube", class="dlgBtn">
+                <button id="btnP4Cube" data-testid="btnP4Cube", class="dlgBtn">
                     Player 4 Cube
                 </button>
-                <button id="btnP4Disk", class="dlgBtn">
+                <button id="btnP4Disk" data-testid="btnP4Disk", class="dlgBtn">
                     Player 4 Disk
                 </button>   
             </section>
             <section id="p5Tokens", class="optButtons">
-                <button id="btnP5Cube", class="dlgBtn">
+                <button id="btnP5Cube" data-testid="btnP5Cube", class="dlgBtn">
                     Player 5 Cube
                 </button>
-                <button id="btnP5Disk", class="dlgBtn">
+                <button id="btnP5Disk" data-testid="btnP5Disk", class="dlgBtn">
                     Player 5 Disk
                 </button>   
             </section>
             <section class="optButtons">
-                <button id="btnNoToken", class="dlgBtn">
+                <button id="btnNoToken" data-testid="btnNoToken", class="dlgBtn">
                     No Tokens
                 </button>
                 <button id="btnNoPlayerToken", class="dlgBtn">
@@ -289,8 +289,8 @@
         </section>
         <section id="gameControls">
             <section id="gameButtonWrap">
-            <button id="newGame" onclick="genNewGame()">New Game</button>
-            <button id="startGame"> Start Game</button>
+            <button id="newGame" data-testid="btnNewGame" onclick="genNewGame()">New Game</button>
+            <button id="startGame" data-testid="btnStartGame"> Start Game</button>
             <button id="resetBoard"> Reset Board</button>
             </section>
             <section id="p1RuleBox", class="ruleBox">

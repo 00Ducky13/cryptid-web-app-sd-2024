@@ -131,6 +131,7 @@ const selectHexItem = document.getElementById("selectHexItem");
 //stone then shack
 //column then row
 let jsonSetup = "";
+module.exports.jsonSetup = jsonSetup;
 var whitebuildcoords = [];
 module.exports.whitebuildcoords = whitebuildcoords;
 function getWhiteCoords(){
@@ -1858,7 +1859,7 @@ document.getElementById("btnP1Cube").onclick = function() {
 };
 module.exports.btnP1CubeClickTest = btnP1CubeClickTest;
 //OnClick for button on popup menu to place a cube from player 2 on the selected hex
-document.getElementById("btnP2Cube").onclick = function() {
+function btnP2CubeClickTest(){
     tempTokensArr = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces;
     for(var i=0;i<tempTokensArr.length;i++){
         if((tempTokensArr[i] == "p2c") || (tempTokensArr[i] == "p2d")){
@@ -1869,10 +1870,14 @@ document.getElementById("btnP2Cube").onclick = function() {
     tempTokensArr.push("p2c");
     drawTokens(false);
     console.log()
-    selectHexItem.close();        
+    selectHexItem.close(); 
+}
+document.getElementById("btnP2Cube").onclick = function() {
+    btnP2CubeClickTest()           
 };
+module.exports.btnP2CubeClickTest = btnP2CubeClickTest;
 //OnClick for button on popup menu to place a cube from player 3 on the selected hex
-document.getElementById("btnP3Cube").onclick = function() {
+function btnP3CubeClickTest(){
     tempTokensArr = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces;
     for(var i=0;i<tempTokensArr.length;i++){
         if((tempTokensArr[i] == "p3c") || (tempTokensArr[i] == "p3d")){
@@ -1883,10 +1888,14 @@ document.getElementById("btnP3Cube").onclick = function() {
     tempTokensArr.push("p3c");
     drawTokens(false);
     console.log()
-    selectHexItem.close();        
+    selectHexItem.close(); 
+}
+document.getElementById("btnP3Cube").onclick = function() {
+    btnP3CubeClickTest()           
 };
+module.exports.btnP3CubeClickTest = btnP3CubeClickTest;
 //OnClick for button on popup menu to place a cube from player 4 on the selected hex
-document.getElementById("btnP4Cube").onclick = function() {
+function btnP4CubeClickTest(){
     tempTokensArr = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces;
     for(var i=0;i<tempTokensArr.length;i++){
         if((tempTokensArr[i] == "p4c") || (tempTokensArr[i] == "p4d")){
@@ -1897,10 +1906,14 @@ document.getElementById("btnP4Cube").onclick = function() {
     tempTokensArr.push("p4c");
     drawTokens(false);
     console.log()
-    selectHexItem.close();        
+    selectHexItem.close();
+}
+document.getElementById("btnP4Cube").onclick = function() {
+    btnP4CubeClickTest()            
 };
+module.exports.btnP4CubeClickTest = btnP4CubeClickTest;
 //OnClick for button on popup menu to place a cube from player 5 on the selected hex
-document.getElementById("btnP5Cube").onclick = function() {
+function btnP5CubeClickTest(){
     tempTokensArr = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces;
     for(var i=0;i<tempTokensArr.length;i++){
         if((tempTokensArr[i] == "p5c") || (tempTokensArr[i] == "p5d")){
@@ -1911,10 +1924,14 @@ document.getElementById("btnP5Cube").onclick = function() {
     tempTokensArr.push("p5c");
     drawTokens(false);
     console.log()
-    selectHexItem.close();        
+    selectHexItem.close(); 
+}
+document.getElementById("btnP5Cube").onclick = function() {
+    btnP5CubeClickTest()
 };
+module.exports.btnP5CubeClickTest = btnP5CubeClickTest;
 //OnClick for button on popup menu to place a disk from player 1 on the selected hex
-document.getElementById("btnP1Disk").onclick = function() {
+function btnP1DiskClickTest(){
     tempTokensArr = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces;
     for(var i=0;i<tempTokensArr.length;i++){
         if((tempTokensArr[i] == "p1c") || (tempTokensArr[i] == "p1d")){
@@ -1925,10 +1942,14 @@ document.getElementById("btnP1Disk").onclick = function() {
     tempTokensArr.push("p1d");
     drawTokens(false);
     console.log()
-    selectHexItem.close();        
+    selectHexItem.close();
+}
+document.getElementById("btnP1Disk").onclick = function() {
+    btnP1DiskClickTest()
 };
+module.exports.btnP1DiskClickTest = btnP1DiskClickTest;
 //OnClick for button on popup menu to place a disk from player 2 on the selected hex
-document.getElementById("btnP2Disk").onclick = function() {
+function btnP2DiskClickTest(){
     tempTokensArr = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces;
     for(var i=0;i<tempTokensArr.length;i++){
         if((tempTokensArr[i] == "p2c") || (tempTokensArr[i] == "p2d")){
@@ -1939,10 +1960,14 @@ document.getElementById("btnP2Disk").onclick = function() {
     tempTokensArr.push("p2d");
     drawTokens(false);
     console.log()
-    selectHexItem.close();        
+    selectHexItem.close(); 
+}
+document.getElementById("btnP2Disk").onclick = function() {
+    btnP2DiskClickTest()           
 };
+module.exports.btnP2DiskClickTest = btnP2DiskClickTest;
 //OnClick for button on popup menu to place a disk from player 3 on the selected hex
-document.getElementById("btnP3Disk").onclick = function() {
+function btnP3DiskClickTest(){
     tempTokensArr = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces;
     for(var i=0;i<tempTokensArr.length;i++){
         if((tempTokensArr[i] == "p3c") || (tempTokensArr[i] == "p3d")){
@@ -1953,10 +1978,14 @@ document.getElementById("btnP3Disk").onclick = function() {
     tempTokensArr.push("p3d");
     drawTokens(false);
     console.log()
-    selectHexItem.close();        
+    selectHexItem.close();
+}
+document.getElementById("btnP3Disk").onclick = function() {
+    btnP3DiskClickTest();            
 };
+module.exports.btnP3DiskClickTest = btnP3DiskClickTest;
 //OnClick for button on popup menu to place a disk from player 4 on the selected hex
-document.getElementById("btnP4Disk").onclick = function() {
+function btnP4DiskClickTest(){
     tempTokensArr = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces;
     for(var i=0;i<tempTokensArr.length;i++){
         if((tempTokensArr[i] == "p4c") || (tempTokensArr[i] == "p4d")){
@@ -1967,10 +1996,14 @@ document.getElementById("btnP4Disk").onclick = function() {
     tempTokensArr.push("p4d");
     drawTokens(false);
     console.log()
-    selectHexItem.close();        
+    selectHexItem.close();
+}
+document.getElementById("btnP4Disk").onclick = function() {
+    btnP4DiskClickTest();            
 };
+module.exports.btnP4DiskClickTest = btnP4DiskClickTest;
 //OnClick for button on popup menu to place a disk from player 5 on the selected hex
-document.getElementById("btnP5Disk").onclick = function() {
+function btnP5DiskClickTest(){
     tempTokensArr = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces;
     for(var i=0;i<tempTokensArr.length;i++){
         if((tempTokensArr[i] == "p5c") || (tempTokensArr[i] == "p5d")){
@@ -1981,17 +2014,25 @@ document.getElementById("btnP5Disk").onclick = function() {
     tempTokensArr.push("p5d");
     drawTokens(false);
     console.log()
-    selectHexItem.close();        
+    selectHexItem.close();
+}
+document.getElementById("btnP5Disk").onclick = function() {
+    btnP5DiskClickTest();            
 };
+module.exports.btnP5DiskClickTest = btnP5DiskClickTest;
 //OnClick for button on popup menu to remove player tokens from the selected hex
-document.getElementById("btnNoToken").onclick = function() {
+function btnNoTokenClickTest(){
     elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces = [];
     drawTokens(false);
     console.log()
-    selectHexItem.close();        
+    selectHexItem.close();
+}
+document.getElementById("btnNoToken").onclick = function() {
+    btnNoTokenClickTest();            
 };
+module.exports.btnNoTokenClickTest = btnNoTokenClickTest;
 //OnClick for New Game button to create a new game using the map showing on the canvas
-document.getElementById("newGame").onclick = function(){
+function btnNewGameClickTest(){
     if (jsonSetup != ""){
         selectPlayerCount.showModal();    
     }
@@ -2002,9 +2043,12 @@ document.getElementById("newGame").onclick = function(){
     document.getElementById("startGame").disabled = false;
     document.getElementById("boardControls").classList.add("disabled");
     document.getElementById("hexBuildings").classList.add("disabled");
+}
+document.getElementById("newGame").onclick = function(){
+    btnNewGameClickTest();   
 
 };
-
+module.exports.btnNewGameClickTest = btnNewGameClickTest;
 //OnClick for button on popup menu to select three players for the new game
 document.getElementById("btnThreePlayers").onclick = function(){
     playerCount = 3;

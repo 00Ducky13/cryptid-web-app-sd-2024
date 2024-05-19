@@ -8817,5 +8817,2684 @@ describe("btnP1Cube", () => {
     //console.log(elements)
     var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
     expect(tempElem.pieces).toContain('p1c');
-  })  
+  })
+  test("btnP1Cube_selectedElem11P1DiskPresent_elementsArr11HasP1CubeAndNoP1Disk", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP1Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP1Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const btnP1Disk = screen.getByTestId('btnP1Disk');
+      btnP1Disk.onclick = scripts.btnP1DiskClickTest;
+      //console.log(btnWhiteStone.onclick)
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      fireEvent.click(screen.getByTestId('btnP1Disk'));
+      //var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      expect(testElem.pieces).toContain('p1d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP1Cube = screen.getByTestId('btnP1Cube');
+    btnP1Cube.onclick = scripts.btnP1CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP1Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p1c');
+    expect(tempElem.pieces).not.toContain('p1d');
+  }) 
+  test("btnP1Cube_selectedElem11AllOtherCubesPresent_elementsArr11HasP1CubeAndAllOtherPlayerCubes", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP1Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP2Cube = screen.getByTestId('btnP2Cube');
+      btnP2Cube.onclick = scripts.btnP2CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Cube'));
+      const btnP3Cube = screen.getByTestId('btnP3Cube');
+      btnP3Cube.onclick = scripts.btnP3CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Cube'));
+      const btnP4Cube = screen.getByTestId('btnP4Cube');
+      btnP4Cube.onclick = scripts.btnP4CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Cube'));
+      const btnP5Cube = screen.getByTestId('btnP5Cube');
+      btnP5Cube.onclick = scripts.btnP5CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Cube'));
+      //var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      expect(testElem.pieces).toContain('p2c');
+      expect(testElem.pieces).toContain('p3c');
+      expect(testElem.pieces).toContain('p4c');
+      expect(testElem.pieces).toContain('p5c');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP1Cube = screen.getByTestId('btnP1Cube');
+    btnP1Cube.onclick = scripts.btnP1CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP1Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p1c');
+    expect(tempElem.pieces).toContain('p2c');
+    expect(tempElem.pieces).toContain('p3c');
+    expect(tempElem.pieces).toContain('p4c');
+    expect(tempElem.pieces).toContain('p5c');
+  })
+  test("btnP1Cube_selectedElem11AllDisksPresent_elementsArr11HasP1CubeAndAllOtherPlayerDisks", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP1Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP1Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Disk = screen.getByTestId('btnP1Disk');
+      btnP1Disk.onclick = scripts.btnP1DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Disk'));
+      const btnP2Disk = screen.getByTestId('btnP2Disk');
+      btnP2Disk.onclick = scripts.btnP2DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Disk'));
+      const btnP3Disk = screen.getByTestId('btnP3Disk');
+      btnP3Disk.onclick = scripts.btnP3DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Disk'));
+      const btnP4Disk = screen.getByTestId('btnP4Disk');
+      btnP4Disk.onclick = scripts.btnP4DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Disk'));
+      const btnP5Disk = screen.getByTestId('btnP5Disk');
+      btnP5Disk.onclick = scripts.btnP5DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Disk'));
+      
+      expect(testElem.pieces).toContain('p1d');
+      expect(testElem.pieces).toContain('p2d');
+      expect(testElem.pieces).toContain('p3d');
+      expect(testElem.pieces).toContain('p4d');
+      expect(testElem.pieces).toContain('p5d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP1Cube = screen.getByTestId('btnP1Cube');
+    btnP1Cube.onclick = scripts.btnP1CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP1Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p1c');
+    expect(tempElem.pieces).toContain('p2d');
+    expect(tempElem.pieces).toContain('p3d');
+    expect(tempElem.pieces).toContain('p4d');
+    expect(tempElem.pieces).toContain('p5d');
+  }) 
+})
+
+describe("btnP2Cube", () => {
+  test("btnP2Cube_selectedElem11_elementsArr11HasP2Cube", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP2Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP2Cube = screen.getByTestId('btnP2Cube');
+    btnP2Cube.onclick = scripts.btnP2CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP2Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p1c');
+  })
+  test("btnP2Cube_selectedElem11P2DiskPresent_elementsArr11HasP2CubeAndNoP2Disk", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP2Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const btnP2Disk = screen.getByTestId('btnP2Disk');
+      btnP2Disk.onclick = scripts.btnP2DiskClickTest;
+      //console.log(btnWhiteStone.onclick)
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      fireEvent.click(screen.getByTestId('btnP2Disk'));
+      //var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      expect(testElem.pieces).toContain('p2d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP2Cube = screen.getByTestId('btnP2Cube');
+    btnP2Cube.onclick = scripts.btnP2CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP2Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p2c');
+    expect(tempElem.pieces).not.toContain('p2d');
+  }) 
+  test("btnP2Cube_selectedElem11AllOtherCubesPresent_elementsArr11HasP2CubeAndAllOtherPlayerCubes", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP1Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Cube = screen.getByTestId('btnP1Cube');
+      btnP1Cube.onclick = scripts.btnP1CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Cube'));
+      const btnP3Cube = screen.getByTestId('btnP3Cube');
+      btnP3Cube.onclick = scripts.btnP3CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Cube'));
+      const btnP4Cube = screen.getByTestId('btnP4Cube');
+      btnP4Cube.onclick = scripts.btnP4CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Cube'));
+      const btnP5Cube = screen.getByTestId('btnP5Cube');
+      btnP5Cube.onclick = scripts.btnP5CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Cube'));
+      //var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      expect(testElem.pieces).toContain('p1c');
+      expect(testElem.pieces).toContain('p3c');
+      expect(testElem.pieces).toContain('p4c');
+      expect(testElem.pieces).toContain('p5c');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP2Cube = screen.getByTestId('btnP2Cube');
+    btnP2Cube.onclick = scripts.btnP2CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP2Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p1c');
+    expect(tempElem.pieces).toContain('p2c');
+    expect(tempElem.pieces).toContain('p3c');
+    expect(tempElem.pieces).toContain('p4c');
+    expect(tempElem.pieces).toContain('p5c');
+  })
+  test("btnP2Cube_selectedElem11AllDisksPresent_elementsArr11HasP2CubeAndAllOtherPlayerDisks", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP2Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP1Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Disk = screen.getByTestId('btnP1Disk');
+      btnP1Disk.onclick = scripts.btnP1DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Disk'));
+      const btnP2Disk = screen.getByTestId('btnP2Disk');
+      btnP2Disk.onclick = scripts.btnP2DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Disk'));
+      const btnP3Disk = screen.getByTestId('btnP3Disk');
+      btnP3Disk.onclick = scripts.btnP3DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Disk'));
+      const btnP4Disk = screen.getByTestId('btnP4Disk');
+      btnP4Disk.onclick = scripts.btnP4DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Disk'));
+      const btnP5Disk = screen.getByTestId('btnP5Disk');
+      btnP5Disk.onclick = scripts.btnP5DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Disk'));
+      
+      expect(testElem.pieces).toContain('p1d');
+      expect(testElem.pieces).toContain('p2d');
+      expect(testElem.pieces).toContain('p3d');
+      expect(testElem.pieces).toContain('p4d');
+      expect(testElem.pieces).toContain('p5d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP2Cube = screen.getByTestId('btnP2Cube');
+    btnP2Cube.onclick = scripts.btnP2CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP2Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p2c');
+    expect(tempElem.pieces).toContain('p1d');
+    expect(tempElem.pieces).toContain('p3d');
+    expect(tempElem.pieces).toContain('p4d');
+    expect(tempElem.pieces).toContain('p5d');
+  }) 
+})
+
+describe("btnP3Cube", () => {
+  test("btnP3Cube_selectedElem11_elementsArr11HasP3Cube", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP3Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP3Cube = screen.getByTestId('btnP3Cube');
+    btnP3Cube.onclick = scripts.btnP3CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP3Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p3c');
+  })
+  test("btnP3Cube_selectedElem11P3DiskPresent_elementsArr11HasP3CubeAndNoP3Disk", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP3Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const btnP3Disk = screen.getByTestId('btnP3Disk');
+      btnP3Disk.onclick = scripts.btnP3DiskClickTest;
+      //console.log(btnWhiteStone.onclick)
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      fireEvent.click(screen.getByTestId('btnP3Disk'));
+      //var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      expect(testElem.pieces).toContain('p3d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP3Cube = screen.getByTestId('btnP3Cube');
+    btnP3Cube.onclick = scripts.btnP3CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP3Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p3c');
+    expect(tempElem.pieces).not.toContain('p3d');
+  }) 
+  test("btnP3Cube_selectedElem11AllOtherCubesPresent_elementsArr11HasP3CubeAndAllOtherPlayerCubes", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP1Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Cube = screen.getByTestId('btnP1Cube');
+      btnP1Cube.onclick = scripts.btnP1CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Cube'));
+      const btnP2Cube = screen.getByTestId('btnP2Cube');
+      btnP2Cube.onclick = scripts.btnP2CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Cube'));
+      const btnP4Cube = screen.getByTestId('btnP4Cube');
+      btnP4Cube.onclick = scripts.btnP4CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Cube'));
+      const btnP5Cube = screen.getByTestId('btnP5Cube');
+      btnP5Cube.onclick = scripts.btnP5CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Cube'));
+      //var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      expect(testElem.pieces).toContain('p1c');
+      expect(testElem.pieces).toContain('p2c');
+      expect(testElem.pieces).toContain('p4c');
+      expect(testElem.pieces).toContain('p5c');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP3Cube = screen.getByTestId('btnP3Cube');
+    btnP3Cube.onclick = scripts.btnP3CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP3Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p1c');
+    expect(tempElem.pieces).toContain('p2c');
+    expect(tempElem.pieces).toContain('p3c');
+    expect(tempElem.pieces).toContain('p4c');
+    expect(tempElem.pieces).toContain('p5c');
+  })
+  test("btnP3Cube_selectedElem11AllDisksPresent_elementsArr11HasP3CubeAndAllOtherPlayerDisks", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP3Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP1Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Disk = screen.getByTestId('btnP1Disk');
+      btnP1Disk.onclick = scripts.btnP1DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Disk'));
+      const btnP2Disk = screen.getByTestId('btnP2Disk');
+      btnP2Disk.onclick = scripts.btnP2DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Disk'));
+      const btnP3Disk = screen.getByTestId('btnP3Disk');
+      btnP3Disk.onclick = scripts.btnP3DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Disk'));
+      const btnP4Disk = screen.getByTestId('btnP4Disk');
+      btnP4Disk.onclick = scripts.btnP4DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Disk'));
+      const btnP5Disk = screen.getByTestId('btnP5Disk');
+      btnP5Disk.onclick = scripts.btnP5DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Disk'));
+      
+      expect(testElem.pieces).toContain('p1d');
+      expect(testElem.pieces).toContain('p2d');
+      expect(testElem.pieces).toContain('p3d');
+      expect(testElem.pieces).toContain('p4d');
+      expect(testElem.pieces).toContain('p5d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP3Cube = screen.getByTestId('btnP3Cube');
+    btnP3Cube.onclick = scripts.btnP3CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP3Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p3c');
+    expect(tempElem.pieces).toContain('p1d');
+    expect(tempElem.pieces).toContain('p2d');
+    expect(tempElem.pieces).toContain('p4d');
+    expect(tempElem.pieces).toContain('p5d');
+  }) 
+})
+
+describe("btnP4Cube", () => {
+  test("btnP4Cube_selectedElem11_elementsArr11HasP4Cube", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP4Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP4Cube = screen.getByTestId('btnP4Cube');
+    btnP4Cube.onclick = scripts.btnP4CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP4Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p4c');
+  })
+  test("btnP4Cube_selectedElem11P4DiskPresent_elementsArr11HasP4CubeAndNoP4Disk", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP4Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const btnP4Disk = screen.getByTestId('btnP4Disk');
+      btnP4Disk.onclick = scripts.btnP4DiskClickTest;
+      //console.log(btnWhiteStone.onclick)
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      fireEvent.click(screen.getByTestId('btnP4Disk'));
+      //var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      expect(testElem.pieces).toContain('p4d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP4Cube = screen.getByTestId('btnP4Cube');
+    btnP4Cube.onclick = scripts.btnP4CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP4Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p4c');
+    expect(tempElem.pieces).not.toContain('p4d');
+  }) 
+  test("btnP4Cube_selectedElem11AllOtherCubesPresent_elementsArr11HasP4CubeAndAllOtherPlayerCubes", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP1Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Cube = screen.getByTestId('btnP1Cube');
+      btnP1Cube.onclick = scripts.btnP1CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Cube'));
+      const btnP2Cube = screen.getByTestId('btnP2Cube');
+      btnP2Cube.onclick = scripts.btnP2CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Cube'));
+      const btnP3Cube = screen.getByTestId('btnP3Cube');
+      btnP3Cube.onclick = scripts.btnP3CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Cube'));
+      const btnP5Cube = screen.getByTestId('btnP5Cube');
+      btnP5Cube.onclick = scripts.btnP5CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Cube'));
+      //var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      expect(testElem.pieces).toContain('p1c');
+      expect(testElem.pieces).toContain('p2c');
+      expect(testElem.pieces).toContain('p3c');
+      expect(testElem.pieces).toContain('p5c');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP4Cube = screen.getByTestId('btnP4Cube');
+    btnP4Cube.onclick = scripts.btnP4CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP4Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p1c');
+    expect(tempElem.pieces).toContain('p2c');
+    expect(tempElem.pieces).toContain('p3c');
+    expect(tempElem.pieces).toContain('p4c');
+    expect(tempElem.pieces).toContain('p5c');
+  })
+  test("btnP4Cube_selectedElem11AllDisksPresent_elementsArr11HasP4CubeAndAllOtherPlayerDisks", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP4Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP1Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Disk = screen.getByTestId('btnP1Disk');
+      btnP1Disk.onclick = scripts.btnP1DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Disk'));
+      const btnP2Disk = screen.getByTestId('btnP2Disk');
+      btnP2Disk.onclick = scripts.btnP2DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Disk'));
+      const btnP3Disk = screen.getByTestId('btnP3Disk');
+      btnP3Disk.onclick = scripts.btnP3DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Disk'));
+      const btnP4Disk = screen.getByTestId('btnP4Disk');
+      btnP4Disk.onclick = scripts.btnP4DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Disk'));
+      const btnP5Disk = screen.getByTestId('btnP5Disk');
+      btnP5Disk.onclick = scripts.btnP5DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Disk'));
+      
+      expect(testElem.pieces).toContain('p1d');
+      expect(testElem.pieces).toContain('p2d');
+      expect(testElem.pieces).toContain('p3d');
+      expect(testElem.pieces).toContain('p4d');
+      expect(testElem.pieces).toContain('p5d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP4Cube = screen.getByTestId('btnP4Cube');
+    btnP4Cube.onclick = scripts.btnP4CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP4Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p4c');
+    expect(tempElem.pieces).toContain('p1d');
+    expect(tempElem.pieces).toContain('p2d');
+    expect(tempElem.pieces).toContain('p3d');
+    expect(tempElem.pieces).toContain('p5d');
+  }) 
+})
+
+describe("btnP5Cube", () => {
+  test("btnP5Cube_selectedElem11_elementsArr11HasP5Cube", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP5Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP5Cube = screen.getByTestId('btnP5Cube');
+    btnP5Cube.onclick = scripts.btnP5CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP5Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p5c');
+  })
+  test("btnP5Cube_selectedElem11P4DiskPresent_elementsArr11HasP5CubeAndNoP5Disk", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP5Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const btnP5Disk = screen.getByTestId('btnP5Disk');
+      btnP5Disk.onclick = scripts.btnP5DiskClickTest;
+      //console.log(btnWhiteStone.onclick)
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      fireEvent.click(screen.getByTestId('btnP5Disk'));
+      //var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      expect(testElem.pieces).toContain('p5d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP5Cube = screen.getByTestId('btnP5Cube');
+    btnP5Cube.onclick = scripts.btnP5CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP5Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p5c');
+    expect(tempElem.pieces).not.toContain('p5d');
+  }) 
+  test("btnP5Cube_selectedElem11AllOtherCubesPresent_elementsArr11HasP5CubeAndAllOtherPlayerCubes", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP1Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Cube = screen.getByTestId('btnP1Cube');
+      btnP1Cube.onclick = scripts.btnP1CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Cube'));
+      const btnP2Cube = screen.getByTestId('btnP2Cube');
+      btnP2Cube.onclick = scripts.btnP2CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Cube'));
+      const btnP3Cube = screen.getByTestId('btnP3Cube');
+      btnP3Cube.onclick = scripts.btnP3CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Cube'));
+      const btnP4Cube = screen.getByTestId('btnP4Cube');
+      btnP4Cube.onclick = scripts.btnP4CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Cube'));
+      //var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      expect(testElem.pieces).toContain('p1c');
+      expect(testElem.pieces).toContain('p2c');
+      expect(testElem.pieces).toContain('p3c');
+      expect(testElem.pieces).toContain('p4c');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP5Cube = screen.getByTestId('btnP5Cube');
+    btnP5Cube.onclick = scripts.btnP5CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP5Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p1c');
+    expect(tempElem.pieces).toContain('p2c');
+    expect(tempElem.pieces).toContain('p3c');
+    expect(tempElem.pieces).toContain('p4c');
+    expect(tempElem.pieces).toContain('p5c');
+  })
+  test("btnP5Cube_selectedElem11AllDisksPresent_elementsArr11HasP5CubeAndAllOtherPlayerDisks", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnP5Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP1Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Disk = screen.getByTestId('btnP1Disk');
+      btnP1Disk.onclick = scripts.btnP1DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Disk'));
+      const btnP2Disk = screen.getByTestId('btnP2Disk');
+      btnP2Disk.onclick = scripts.btnP2DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Disk'));
+      const btnP3Disk = screen.getByTestId('btnP3Disk');
+      btnP3Disk.onclick = scripts.btnP3DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Disk'));
+      const btnP4Disk = screen.getByTestId('btnP4Disk');
+      btnP4Disk.onclick = scripts.btnP4DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Disk'));
+      const btnP5Disk = screen.getByTestId('btnP5Disk');
+      btnP5Disk.onclick = scripts.btnP5DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Disk'));
+      
+      expect(testElem.pieces).toContain('p1d');
+      expect(testElem.pieces).toContain('p2d');
+      expect(testElem.pieces).toContain('p3d');
+      expect(testElem.pieces).toContain('p4d');
+      expect(testElem.pieces).toContain('p5d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnP5Cube = screen.getByTestId('btnP5Cube');
+    btnP5Cube.onclick = scripts.btnP5CubeClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnP5Cube'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces).toContain('p5c');
+    expect(tempElem.pieces).toContain('p1d');
+    expect(tempElem.pieces).toContain('p2d');
+    expect(tempElem.pieces).toContain('p3d');
+    expect(tempElem.pieces).toContain('p4d');
+  }) 
+})
+
+describe("btnNoToken", () => {
+  test("btnNoToken_selectedElem11_elementsArr11HasNoTokens", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnNoToken')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      expect(testElem.pieces.length).toEqual(0);
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnNoToken = screen.getByTestId('btnNoToken');
+    btnNoToken.onclick = scripts.btnNoTokenClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnNoToken'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces.length).toEqual(0);
+  })
+  test("btnNoToken_selectedElem11AllDisks_elementsArr11HasNoTokens", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnNoToken')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP1Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Disk')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Disk = screen.getByTestId('btnP1Disk');
+      btnP1Disk.onclick = scripts.btnP1DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Disk'));
+      const btnP2Disk = screen.getByTestId('btnP2Disk');
+      btnP2Disk.onclick = scripts.btnP2DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Disk'));
+      const btnP3Disk = screen.getByTestId('btnP3Disk');
+      btnP3Disk.onclick = scripts.btnP3DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Disk'));
+      const btnP4Disk = screen.getByTestId('btnP4Disk');
+      btnP4Disk.onclick = scripts.btnP4DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Disk'));
+      const btnP5Disk = screen.getByTestId('btnP5Disk');
+      btnP5Disk.onclick = scripts.btnP5DiskClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Disk'));
+      
+      expect(testElem.pieces).toContain('p1d');
+      expect(testElem.pieces).toContain('p2d');
+      expect(testElem.pieces).toContain('p3d');
+      expect(testElem.pieces).toContain('p4d');
+      expect(testElem.pieces).toContain('p5d');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnNoToken = screen.getByTestId('btnNoToken');
+    btnNoToken.onclick = scripts.btnNoTokenClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnNoToken'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces.length).toEqual(0);
+  })
+  test("btnNoToken_selectedElem11AllCubes_elementsArr11HasNoTokens", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      expect(screen.getByTestId('btnNoToken')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP1Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP2Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP3Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP4Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('btnP5Cube')).toBeInTheDocument();
+      expect(screen.getByTestId('selectHexItem')).toBeInTheDocument();
+      const elements = scripts.getElements();
+      var testElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+      testElem.pieces = [];
+      const btnP1Cube = screen.getByTestId('btnP1Cube');
+      btnP1Cube.onclick = scripts.btnP1CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP1Cube'));
+      const btnP2Cube = screen.getByTestId('btnP2Cube');
+      btnP2Cube.onclick = scripts.btnP2CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP2Cube'));
+      const btnP3Cube = screen.getByTestId('btnP3Cube');
+      btnP3Cube.onclick = scripts.btnP3CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP3Cube'));
+      const btnP4Cube = screen.getByTestId('btnP4Cube');
+      btnP4Cube.onclick = scripts.btnP4CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP4Cube'));
+      const btnP5Cube = screen.getByTestId('btnP5Cube');
+      btnP5Cube.onclick = scripts.btnP5CubeClickTest;
+      fireEvent.click(screen.getByTestId('btnP5Cube'));
+      
+      expect(testElem.pieces).toContain('p1c');
+      expect(testElem.pieces).toContain('p2c');
+      expect(testElem.pieces).toContain('p3c');
+      expect(testElem.pieces).toContain('p4c');
+      expect(testElem.pieces).toContain('p5c');
+    });
+    const selectHexItem = screen.getByTestId('selectHexItem');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    selectHexItem.setAttribute('open', '');
+    scripts.setSelectedElem([1,1])
+    const selectedElem = scripts.getSelectedElem()
+    //console.log(selectedElem);
+    const btnNoToken = screen.getByTestId('btnNoToken');
+    btnNoToken.onclick = scripts.btnNoTokenClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnNoToken'));
+    
+    const elements = scripts.getElements();
+    //const whitebuildcoords = scripts.getWhiteCoords();
+    //console.log(elements)
+    var tempElem = elements.find(({ id }) => (id[0] == 1)&&(id[1] == 1))
+    expect(tempElem.pieces.length).toEqual(0);
+  })
+})
+
+describe("newGame", ()=>{
+  test("newGame_jsonObjectPresent_selectPlayerNumPopup", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    let jsonSetup = scripts.jsonSetup;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      scripts.jsonSetup = {
+        "mapCode": "186435778A711A2311",
+        "mode": "intro",
+        "key": "intro_186435778A711A2311",
+        "players": {
+            "2": [
+                {
+                    "destination": "2, 5",
+                    "rules": [
+                        "within_desert",
+                        "within_water",
+                        "within_fissure",
+                        "forest_or_bone"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "3, 8",
+                    "rules": [
+                        "forest_or_desert",
+                        "within_red",
+                        "forest_or_mountain",
+                        "within_dormant_fissure"
+                    ],
+                    "hint": "hint_not_1"
+                },
+                {
+                    "destination": "4, 9",
+                    "rules": [
+                        "within_fissure",
+                        "within_desert",
+                        "within_active_fissure",
+                        "desert_or_mountain"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "5, 2",
+                    "rules": [
+                        "within_green",
+                        "forest_or_mountain",
+                        "within_blue",
+                        "within_bone"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "5, 3",
+                    "rules": [
+                        "within_blue",
+                        "within_mountain",
+                        "within_green",
+                        "forest_or_bone"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "6, 2",
+                    "rules": [
+                        "within_water",
+                        "within_active_fissure",
+                        "water_or_desert",
+                        "within_dormant_fissure"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "6, 9",
+                    "rules": [
+                        "within_mountain",
+                        "desert_or_bone",
+                        "within_water",
+                        "within_forest"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "6, 10",
+                    "rules": [
+                        "forest_or_desert",
+                        "within_active_fissure",
+                        "within_green",
+                        "within_desert"
+                    ],
+                    "hint": "hint_mountain"
+                },
+                {
+                    "destination": "6, 12",
+                    "rules": [
+                        "within_dormant_fissure",
+                        "within_active_fissure",
+                        "forest_or_desert",
+                        "within_fissure"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "7, 1",
+                    "rules": [
+                        "within_dormant_fissure",
+                        "within_active_fissure",
+                        "water_or_bone",
+                        "mountain_or_bone"
+                    ],
+                    "hint": "hint_not_1"
+                },
+                {
+                    "destination": "8, 10",
+                    "rules": [
+                        "water_or_bone",
+                        "within_desert",
+                        "within_mountain",
+                        "within_fissure"
+                    ],
+                    "hint": "hint_not_3"
+                }
+            ],
+            "3": [
+                {
+                    "destination": "3, 8",
+                    "rules": [
+                        "within_dormant_fissure",
+                        "within_red",
+                        "forest_or_bone"
+                    ],
+                    "hint": "hint_not_1"
+                },
+                {
+                    "destination": "5, 10",
+                    "rules": [
+                        "within_active_fissure",
+                        "water_or_bone",
+                        "within_desert"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "6, 2",
+                    "rules": [
+                        "water_or_desert",
+                        "within_active_fissure",
+                        "within_blue"
+                    ],
+                    "hint": "hint_not_1"
+                },
+                {
+                    "destination": "7, 5",
+                    "rules": [
+                        "forest_or_bone",
+                        "within_red",
+                        "within_blue"
+                    ],
+                    "hint": "hint_not_2"
+                }
+            ],
+            "4": [
+                {
+                    "destination": "2, 5",
+                    "rules": [
+                        "within_desert",
+                        "within_water",
+                        "within_fissure",
+                        "forest_or_bone"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "3, 8",
+                    "rules": [
+                        "forest_or_desert",
+                        "within_red",
+                        "forest_or_mountain",
+                        "within_dormant_fissure"
+                    ],
+                    "hint": "hint_not_1"
+                },
+                {
+                    "destination": "4, 9",
+                    "rules": [
+                        "within_fissure",
+                        "within_desert",
+                        "within_active_fissure",
+                        "desert_or_mountain"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "5, 2",
+                    "rules": [
+                        "within_green",
+                        "forest_or_mountain",
+                        "within_blue",
+                        "within_bone"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "5, 3",
+                    "rules": [
+                        "within_blue",
+                        "within_mountain",
+                        "within_green",
+                        "forest_or_bone"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "5, 11",
+                    "rules": [
+                        "water_or_desert",
+                        "within_fissure",
+                        "within_active_fissure",
+                        "within_red"
+                    ],
+                    "hint": "hint_bone"
+                },
+                {
+                    "destination": "6, 2",
+                    "rules": [
+                        "within_water",
+                        "within_active_fissure",
+                        "water_or_desert",
+                        "within_dormant_fissure"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "6, 9",
+                    "rules": [
+                        "within_mountain",
+                        "desert_or_bone",
+                        "within_water",
+                        "within_forest"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "6, 10",
+                    "rules": [
+                        "forest_or_desert",
+                        "within_active_fissure",
+                        "within_green",
+                        "within_desert"
+                    ],
+                    "hint": "hint_mountain"
+                },
+                {
+                    "destination": "6, 12",
+                    "rules": [
+                        "within_dormant_fissure",
+                        "within_active_fissure",
+                        "forest_or_desert",
+                        "within_fissure"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "7, 1",
+                    "rules": [
+                        "within_dormant_fissure",
+                        "within_active_fissure",
+                        "water_or_bone",
+                        "mountain_or_bone"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "7, 10",
+                    "rules": [
+                        "within_active_fissure",
+                        "within_green",
+                        "within_bone",
+                        "water_or_mountain"
+                    ],
+                    "hint": "hint_forest"
+                },
+                {
+                    "destination": "8, 5",
+                    "rules": [
+                        "within_blue",
+                        "water_or_desert",
+                        "within_forest",
+                        "within_red"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "8, 10",
+                    "rules": [
+                        "water_or_bone",
+                        "within_desert",
+                        "within_mountain",
+                        "within_fissure"
+                    ],
+                    "hint": "hint_not_2"
+                }
+            ],
+            "5": [
+                {
+                    "destination": "2, 3",
+                    "rules": [
+                        "within_desert",
+                        "water_or_mountain",
+                        "within_bone",
+                        "water_or_bone",
+                        "within_blue"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "2, 4",
+                    "rules": [
+                        "within_water",
+                        "within_forest",
+                        "within_dormant_fissure",
+                        "within_blue",
+                        "desert_or_mountain"
+                    ],
+                    "hint": "hint_bone"
+                },
+                {
+                    "destination": "2, 7",
+                    "rules": [
+                        "within_forest",
+                        "within_mountain",
+                        "within_desert",
+                        "water_or_desert",
+                        "within_green"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "3, 8",
+                    "rules": [
+                        "forest_or_bone",
+                        "forest_or_desert",
+                        "within_dormant_fissure",
+                        "within_desert",
+                        "within_mountain"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "4, 9",
+                    "rules": [
+                        "desert_or_mountain",
+                        "within_fissure",
+                        "within_desert",
+                        "within_forest",
+                        "within_mountain"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "5, 2",
+                    "rules": [
+                        "desert_or_mountain",
+                        "within_mountain",
+                        "within_desert",
+                        "within_fissure",
+                        "within_water"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "5, 3",
+                    "rules": [
+                        "within_bone",
+                        "within_green",
+                        "forest_or_bone",
+                        "within_dormant_fissure",
+                        "within_mountain"
+                    ],
+                    "hint": "hint_water"
+                },
+                {
+                    "destination": "5, 4",
+                    "rules": [
+                        "within_forest",
+                        "within_dormant_fissure",
+                        "forest_or_bone",
+                        "desert_or_bone",
+                        "within_water"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "5, 5",
+                    "rules": [
+                        "forest_or_bone",
+                        "within_water",
+                        "forest_or_desert",
+                        "within_bone",
+                        "within_dormant_fissure"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "5, 10",
+                    "rules": [
+                        "within_mountain",
+                        "water_or_mountain",
+                        "water_or_forest",
+                        "within_desert",
+                        "within_forest"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "6, 1",
+                    "rules": [
+                        "within_active_fissure",
+                        "within_bone",
+                        "within_fissure",
+                        "desert_or_mountain",
+                        "within_dormant_fissure"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "6, 9",
+                    "rules": [
+                        "water_or_desert",
+                        "desert_or_bone",
+                        "within_forest",
+                        "within_red",
+                        "within_water"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "6, 10",
+                    "rules": [
+                        "forest_or_mountain",
+                        "within_water",
+                        "within_active_fissure",
+                        "water_or_forest",
+                        "within_red"
+                    ],
+                    "hint": "hint_bone"
+                },
+                {
+                    "destination": "6, 12",
+                    "rules": [
+                        "within_mountain",
+                        "within_fissure",
+                        "water_or_forest",
+                        "within_forest",
+                        "within_dormant_fissure"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "7, 1",
+                    "rules": [
+                        "within_dormant_fissure",
+                        "within_water",
+                        "forest_or_bone",
+                        "within_bone",
+                        "within_fissure"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "7, 2",
+                    "rules": [
+                        "water_or_bone",
+                        "forest_or_bone",
+                        "within_active_fissure",
+                        "within_forest",
+                        "within_water"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "7, 3",
+                    "rules": [
+                        "forest_or_desert",
+                        "within_blue",
+                        "within_forest",
+                        "within_water",
+                        "within_bone"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "7, 9",
+                    "rules": [
+                        "within_desert",
+                        "mountain_or_bone",
+                        "within_mountain",
+                        "within_red",
+                        "desert_or_bone"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "7, 10",
+                    "rules": [
+                        "within_active_fissure",
+                        "within_bone",
+                        "within_dormant_fissure",
+                        "within_forest",
+                        "mountain_or_bone"
+                    ],
+                    "hint": "hint_not_3"
+                },
+                {
+                    "destination": "8, 2",
+                    "rules": [
+                        "within_blue",
+                        "water_or_bone",
+                        "within_mountain",
+                        "mountain_or_bone",
+                        "within_forest"
+                    ],
+                    "hint": "hint_not_2"
+                },
+                {
+                    "destination": "9, 3",
+                    "rules": [
+                        "within_fissure",
+                        "within_blue",
+                        "desert_or_mountain",
+                        "within_forest",
+                        "within_mountain"
+                    ],
+                    "hint": "hint_not_2"
+                }
+            ]
+        }
+      } 
+      expect(screen.getByTestId('selectPlayerCount')).toBeInTheDocument();
+      expect(screen.getByTestId('btnNewGame')).toBeInTheDocument();
+      expect(screen.getByTestId('btnNewBoard')).toBeInTheDocument(); 
+      expect(screen.getByTestId('btnStartGame')).toBeInTheDocument();
+      expect(screen.getByTestId('secBoardControls')).toBeInTheDocument();
+      expect(screen.getByTestId('secHexBuildings')).toBeInTheDocument();
+    });
+    //const selectPlayerCount = screen.getByTestId('selectPlayerCount');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    const btnNewGame = screen.getByTestId('btnNewGame');
+    btnNewGame.onclick = scripts.btnNewGameClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnNewGame'));
+    selectPlayerCount.setAttribute('open', '');
+    expect(selectPlayerCount.hasAttribute('open')).toBeTruthy();
+    expect(screen.getByTestId('btnNewBoard').disabled).toBeTruthy();
+    expect(screen.getByTestId('btnStartGame').disabled).toBeFalsy();
+    expect(screen.getByTestId("secBoardControls")).toHaveClass("disabled");
+    expect(screen.getByTestId("secHexBuildings")).toHaveClass("disabled");
+  })
+  test("newGame_jsonObjectNotPresent_noGameLoadedPopup", async()=>{
+    const scripts = require('./scripts');
+    let board = document.getElementById('board');
+    let buildingsBoard = document.getElementById('buildings');
+    let tokenBoard = document.getElementById('tokens');
+    const ctxBoard = board.getContext('2d');
+    const ctxBuild = buildings.getContext('2d');
+    const ctxTokens = tokens.getContext('2d');
+    const selectPlayerCount = document.getElementById("selectPlayerCount");
+    const noGameLoaded = document.getElementById("noGameLoaded");
+    const P2 = scripts.P2;
+    const EDGES = scripts.EDGES;
+    const RADIUS = scripts.RADIUS;
+    const TAU = scripts.TAU;
+    const EDGE_LEN = scripts.EDGE_LEN;
+    const GRID_Y_SPACE = scripts.GRID_Y_SPACE;
+    const GRID_X_SPACE = scripts.GRID_X_SPACE;
+    const GRID_Y_OFFSET = scripts.GRID_Y_OFFSET;
+    const water = scripts.water;
+    const forest = scripts.forest;
+    const swamp = scripts.swamp;
+    const desert = scripts.desert;
+    const mount = scripts.mount;
+    
+    //var habs = scripts.habs;
+    const cols1 = scripts.cols1;
+    const habs1 = scripts.habs1;
+    const cols2 = scripts.cols2;
+    const habs2 = scripts.habs2;
+    const cols3 = scripts.cols3;
+    const habs3 = scripts.habs3;
+    const cols4 = scripts.cols4;
+    const habs4 = scripts.habs4;
+    const cols5 = scripts.cols5;
+    const habs5 = scripts.habs5;
+    const cols6 = scripts.cols6;
+    const habs6 = scripts.habs6;
+    const whitebuild = scripts.whitebuild;
+    const bluebuild = scripts.bluebuild;
+    const greenbuild = scripts.greenbuild;
+    const blackbuild = scripts.blackbuild;
+    let jsonSetup = scripts.jsonSetup;
+    scripts.setWhiteCoords([[0,0],[0,0]])
+    var p = P2()
+    const testCoords = scripts.gridToPixel(1,1,p);
+    var x = testCoords[0];
+    var y = testCoords[1];
+    await waitFor(() => {
+      scripts.jsonSetup = "" 
+      expect(screen.getByTestId('noGameLoaded')).toBeInTheDocument();
+      expect(screen.getByTestId('btnNewGame')).toBeInTheDocument();
+      expect(screen.getByTestId('btnNewBoard')).toBeInTheDocument(); 
+      expect(screen.getByTestId('btnStartGame')).toBeInTheDocument();
+      expect(screen.getByTestId('secBoardControls')).toBeInTheDocument();
+      expect(screen.getByTestId('secHexBuildings')).toBeInTheDocument();
+    });
+    //const selectPlayerCount = screen.getByTestId('selectPlayerCount');
+    
+    //console.log(selectHexItem.id)
+    // Simulate a click at specific coordinates
+    //const x = 100;
+    //const y = 100;
+    const btnNewGame = screen.getByTestId('btnNewGame');
+    btnNewGame.onclick = scripts.btnNewGameClickTest;
+    //console.log(btnWhiteStone.onclick)
+    fireEvent.click(screen.getByTestId('btnNewGame'));
+    noGameLoaded.setAttribute('open', '');
+    expect(noGameLoaded.hasAttribute('open')).toBeTruthy();
+    expect(screen.getByTestId('btnNewBoard').disabled).toBeTruthy();
+    expect(screen.getByTestId('btnStartGame').disabled).toBeFalsy();
+    expect(screen.getByTestId("secBoardControls")).toHaveClass("disabled");
+    expect(screen.getByTestId("secHexBuildings")).toHaveClass("disabled");
+  })    
 })
