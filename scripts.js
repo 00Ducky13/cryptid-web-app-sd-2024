@@ -1,4 +1,373 @@
 /* Place your JavaScript in this file */
+
+
+/*const p= {
+    "map": "24915C013A535817068783",
+    "players": 3,
+    "mode": 1,
+    "dest": [
+        8,
+        2
+    ],
+    "rules": [
+        "within_blue",
+        "desert_or_mountain",
+        "not_within_mountain"
+    ],
+    "hint": "hint_not_2",
+    "turns": [
+        {
+            "round": -1,
+            "turn": 1,
+            "move": "setup",
+            "player": 1,
+            "hex": [
+                12,
+                7
+            ],
+            "tokenUpdate": [
+                "p1c"
+            ]
+        },
+        {
+            "round": -1,
+            "turn": 2,
+            "move": "setup",
+            "player": 2,
+            "hex": [
+                9,
+                9
+            ],
+            "tokenUpdate": [
+                "p2c"
+            ]
+        },
+        {
+            "round": -1,
+            "turn": 3,
+            "move": "setup",
+            "player": 3,
+            "hex": [
+                6,
+                7
+            ],
+            "tokenUpdate": [
+                "p3c"
+            ]
+        },
+        {
+            "round": 0,
+            "turn": 1,
+            "move": "setup",
+            "player": 1,
+            "hex": [
+                12,
+                3
+            ],
+            "tokenUpdate": [
+                "p1c"
+            ]
+        },
+        {
+            "round": 0,
+            "turn": 2,
+            "move": "setup",
+            "player": 2,
+            "hex": [
+                6,
+                9
+            ],
+            "tokenUpdate": [
+                "p2c"
+            ]
+        },
+        {
+            "round": 0,
+            "turn": 3,
+            "move": "setup",
+            "player": 3,
+            "hex": [
+                6,
+                3
+            ],
+            "tokenUpdate": [
+                "p3c"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 1,
+            "move": "quest",
+            "player": 1,
+            "hex": [
+                7,
+                9
+            ],
+            "tokenUpdate": [
+                "p2c"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 1,
+            "move": "quest",
+            "player": 1,
+            "hex": [
+                11,
+                5
+            ],
+            "tokenUpdate": [
+                "p1c"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 2,
+            "move": "quest",
+            "player": 2,
+            "hex": [
+                3,
+                8
+            ],
+            "tokenUpdate": [
+                "p1d"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 3,
+            "move": "quest",
+            "player": 3,
+            "hex": [
+                3,
+                6
+            ],
+            "tokenUpdate": [
+                "p2c"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 3,
+            "move": "quest",
+            "player": 3,
+            "hex": [
+                11,
+                9
+            ],
+            "tokenUpdate": [
+                "p3c"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 4,
+            "move": "quest",
+            "player": 1,
+            "hex": [
+                3,
+                8
+            ],
+            "tokenUpdate": [
+                "p3c"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 4,
+            "move": "quest",
+            "player": 1,
+            "hex": [
+                9,
+                4
+            ],
+            "tokenUpdate": [
+                "p1c"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 5,
+            "move": "search",
+            "player": 2,
+            "hex": [
+                2,
+                8
+            ],
+            "tokenUpdate": [
+                "p2d",
+                "p3d",
+                "p1d"
+            ]
+        }
+    ]
+}*/
+
+const p ={
+    "map": "53478C7A623B076B13",
+    "players": 3,
+    "mode": 0,
+    "dest": [
+        3,
+        10
+    ],
+    "rules": [
+        "within_active_fissure",
+        "within_red",
+        "within_pyramid"
+    ],
+    "hint": "hint_not_1",
+    "turns": [
+        {
+            "round": -1,
+            "turn": 1,
+            "move": "setup",
+            "player": 1,
+            "hex": [
+                12,
+                9
+            ],
+            "tokenUpdate": [
+                "p1c"
+            ]
+        },
+        {
+            "round": -1,
+            "turn": 2,
+            "move": "setup",
+            "player": 2,
+            "hex": [
+                4,
+                9
+            ],
+            "tokenUpdate": [
+                "p2c"
+            ]
+        },
+        {
+            "round": -1,
+            "turn": 3,
+            "move": "setup",
+            "player": 3,
+            "hex": [
+                7,
+                6
+            ],
+            "tokenUpdate": [
+                "p3c"
+            ]
+        },
+        {
+            "round": 0,
+            "turn": 1,
+            "move": "setup",
+            "player": 1,
+            "hex": [
+                12,
+                2
+            ],
+            "tokenUpdate": [
+                "p1c"
+            ]
+        },
+        {
+            "round": 0,
+            "turn": 2,
+            "move": "setup",
+            "player": 2,
+            "hex": [
+                1,
+                9
+            ],
+            "tokenUpdate": [
+                "p2c"
+            ]
+        },
+        {
+            "round": 0,
+            "turn": 3,
+            "move": "setup",
+            "player": 3,
+            "hex": [
+                1,
+                3
+            ],
+            "tokenUpdate": [
+                "p3c"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 1,
+            "move": "quest",
+            "player": 1,
+            "hex": [
+                6,
+                8
+            ],
+            "tokenUpdate": [
+                "p2c"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 1,
+            "move": "quest",
+            "player": 1,
+            "hex": [
+                1,
+                6
+            ],
+            "tokenUpdate": [
+                "p1c"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 2,
+            "move": "quest",
+            "player": 2,
+            "hex": [
+                9,
+                7
+            ],
+            "tokenUpdate": [
+                "p3d"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 3,
+            "move": "quest",
+            "player": 3,
+            "hex": [
+                10,
+                3
+            ],
+            "tokenUpdate": [
+                "p1d"
+            ]
+        },
+        {
+            "round": 1,
+            "turn": 4,
+            "move": "search",
+            "player": 1,
+            "hex": [
+                10,
+                3
+            ],
+            "tokenUpdate": [
+                "p1d",
+                "p2d",
+                "p3d"
+            ]
+        }
+    ]
+}
+
+
+
 //var domContext
 let board = document.getElementById('board');
 let buildingsBoard = document.getElementById('buildings');
@@ -154,16 +523,19 @@ var url = "https://www.playcryptid.com/php/getGame.php"; //base url for playcryp
 var tempStr = "";
 gameModeBox.close();
 genEmptyBoard();
+
+
 //generate basic empty board
 function genEmptyBoard(){
     inGame = false;
+    resetCustomBoardOptions()
     document.getElementById("p1Rule").disabled = true;
     document.getElementById("p2Rule").disabled = true;
     document.getElementById("p3Rule").disabled = true;
     document.getElementById("p4Rule").disabled = true;
     document.getElementById("p5Rule").disabled = true;
     document.getElementById("endGame").disabled = true;
-    document.getElementById("newGame").disabled = true;
+    document.getElementById("newGame").disabled = false;
     document.getElementById("endTurn").disabled = true;
     document.getElementById("btnNoToken").disabled = false;
     document.getElementById("btnNoPlayerToken").disabled = true;
@@ -562,6 +934,7 @@ function drawGrid(cols,habs){
         drawTile(tileStartCoords[(i / 18) | 0][0],tileStartCoords[(i / 18) | 0][1],6, 3, createPoly(EDGES,RADIUS), colsTemp,habsTemp);
     }
 }
+
 //draws habitats
 function drawHabs(points,habs){
     const p = P2(); 
@@ -707,7 +1080,137 @@ function drawTokens(sol){
         const p = P2();
         var gx = currentGameDest[1]; 
         var gy = currentGameDest[0];
-        drawPoly(gridToPixel(gx, gy, p), createPoly(EDGES,0.9*RADIUS),"tokens");
+        drawPoly(gridToPixel(gx, gy, p), createPoly(EDGES,0.8*RADIUS),"tokens");
+    }
+    elements.forEach(function (hex) {
+        tokensOnHex = hex.pieces;
+        //console.log(hex);
+        for (var j=0;j<tokensOnHex.length;j++){
+            const pc = P2();
+            switch (tokensOnHex[j]){
+                case "p1c":
+                    var Centx = hex.id[0];
+                    var Centy = hex.id[1] - p1YOffset;
+                    ctxTokens.fillStyle = p1color;
+                    ctxTokens.lineWidth = 1;
+                    ctxTokens.strokeStyle ="black";
+                    drawPoly(gridToPixel(Centx, Centy, pc), createPoly(4,RADIUS*0.2),"tokens");
+                    break;
+                case "p1d":
+                    var Centx = hex.id[0];
+                    var Centy = hex.id[1] - p1YOffset;
+                    
+                    ctxTokens.fillStyle = p1color;
+                    ctxTokens.lineWidth = 1;
+                    ctxTokens.strokeStyle ="black";
+                    drawPoly(gridToPixel(Centx, Centy, pc), createPoly(10,RADIUS*0.2),"tokens");
+                    break;
+                case "p2c":
+                    var Centx = hex.id[0];
+                    var Centy = hex.id[1] - p2YOffset;
+                    
+                    ctxTokens.fillStyle = p2color;
+                    ctxTokens.lineWidth = 1;
+                    ctxTokens.strokeStyle ="black";
+                    drawPoly(gridToPixel(Centx, Centy, pc), createPoly(4,RADIUS*0.2),"tokens");
+                    break;
+                case "p2d":
+                    var Centx = hex.id[0];
+                    var Centy = hex.id[1] - p2YOffset;
+                    
+                    ctxTokens.fillStyle = p2color;
+                    ctxTokens.lineWidth = 1;
+                    ctxTokens.strokeStyle ="black";
+                    drawPoly(gridToPixel(Centx, Centy, pc), createPoly(10,RADIUS*0.2),"tokens");
+                    break;
+                case "p3c":
+                    var Centx = hex.id[0];
+                    var Centy = hex.id[1] - p3YOffset;
+                    
+                    ctxTokens.fillStyle = p3color;
+                    ctxTokens.lineWidth = 1;
+                    ctxTokens.strokeStyle ="black";
+                    drawPoly(gridToPixel(Centx, Centy, pc), createPoly(4,RADIUS*0.2),"tokens");
+                    break;
+                case "p3d":
+                    var Centx = hex.id[0];
+                    var Centy = hex.id[1] - p3YOffset;
+                    
+                    ctxTokens.fillStyle = p3color;
+                    ctxTokens.lineWidth = 1;
+                    ctxTokens.strokeStyle ="black";
+                    drawPoly(gridToPixel(Centx, Centy, pc), createPoly(10,RADIUS*0.2),"tokens");
+                    break;
+                case "p4c":
+                    var Centx = hex.id[0];
+                    var Centy = hex.id[1] - p4YOffset;
+                    
+                    ctxTokens.fillStyle = p4color;
+                    ctxTokens.lineWidth = 1;
+                    ctxTokens.strokeStyle ="black";
+                    drawPoly(gridToPixel(Centx, Centy, pc), createPoly(4,RADIUS*0.2),"tokens");
+                    break;
+                case "p4d":
+                    var Centx = hex.id[0];
+                    var Centy = hex.id[1] - p4YOffset;
+                    
+                    ctxTokens.fillStyle = p4color;
+                    ctxTokens.lineWidth = 1;
+                    ctxTokens.strokeStyle ="black";
+                    drawPoly(gridToPixel(Centx, Centy, pc), createPoly(10,RADIUS*0.2),"tokens");
+                    break;
+                case "p5c":
+                    var Centx = hex.id[0];
+                    var Centy = hex.id[1] - p5YOffset;
+                    
+                    ctxTokens.fillStyle = p5color;
+                    ctxTokens.lineWidth = 1;
+                    ctxTokens.strokeStyle ="black";
+                    drawPoly(gridToPixel(Centx, Centy, pc), createPoly(4,RADIUS*0.2),"tokens");
+                    break;
+                case "p5d":
+                    var Centx = hex.id[0];
+                    var Centy = hex.id[1] - p5YOffset;
+                    
+                    ctxTokens.fillStyle = p5color;
+                    ctxTokens.lineWidth = 1;
+                    ctxTokens.strokeStyle ="black";
+                    drawPoly(gridToPixel(Centx, Centy, pc), createPoly(10,RADIUS*0.2),"tokens");
+                    break;
+            }
+        }
+    });    
+}
+
+function drawTokensReview(sol,highlightCoords,highlightCoords2){
+    ctxTokens.setTransform(1,0,0,1,0,0);
+    ctxTokens.clearRect(0, 0,
+                tokenBoard.width, tokenBoard.height);
+    var tokensOnHex;
+    if (sol){
+        ctxTokens.fillStyle = "#ffffff00";
+        ctxTokens.strokeStyle = "#e300fc";
+        ctxTokens.lineWidth = 4;
+        const p = P2();
+        var gx = currentGameDest[1]; 
+        var gy = currentGameDest[0];
+        drawPoly(gridToPixel(gx, gy, p), createPoly(EDGES,0.8*RADIUS),"tokens");
+    }
+    ctxTokens.fillStyle = "#ffffff00";
+    ctxTokens.strokeStyle = "#03fc7f";
+    ctxTokens.lineWidth = 4;
+    const p = P2();
+    var gx = highlightCoords[1]; 
+    var gy = highlightCoords[0];
+    drawPoly(gridToPixel(gx, gy, p), createPoly(EDGES,0.8*RADIUS),"tokens");
+    if (highlightCoords2 != null){
+        ctxTokens.fillStyle = "#ffffff00";
+        ctxTokens.strokeStyle = "#fc9803";
+        ctxTokens.lineWidth = 4;
+        const p = P2();
+        var gx = highlightCoords2[1]; 
+        var gy = highlightCoords2[0];
+        drawPoly(gridToPixel(gx, gy, p), createPoly(EDGES,0.8*RADIUS),"tokens");    
     }
     elements.forEach(function (hex) {
         tokensOnHex = hex.pieces;
@@ -833,6 +1336,10 @@ tokens.addEventListener('click', function(event) {
             //alert('clicked element ' + element.id);
             selectedElem = element.id;
             console.log(element.id)
+            if ((inGame) && (element.pieces.includes("p1c") ||element.pieces.includes("p2c")||element.pieces.includes("p3c")||element.pieces.includes("p4c")||element.pieces.includes("p5c"))){
+                document.getElementById("hintBoxText").innerText = "Please select a hex that does not contain a cube";
+                document.getElementById("hintBox").showModal();
+            }
             if ((inGame) && (turnTaken == false)){
                 document.getElementById("takeTurn").showModal();
             }
@@ -845,11 +1352,43 @@ tokens.addEventListener('click', function(event) {
     });
 
 }, false);
+function removeBuildsFromSelectedElem(){
+    var hexBuilds = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).build;
+    
+    switch(hexBuilds){
+        case "wt":
+            whitebuildcoords[0] = [0,0];
+            break;
+        case "ws":
+            whitebuildcoords[1] = [0,0];
+            break;
+        case "gt":
+            greenbuildcoords[0] = [0,0];
+            break;
+        case "gs":
+            greenbuildcoords[1] = [0,0];
+            break;
+        case "bt":
+            bluebuildcoords[0] = [0,0];
+            break;
+        case "bs":
+            bluebuildcoords[1] = [0,0];
+            break;
+        case "xt":
+            blackbuildcoords[0] = [0,0];
+            break;
+        case "xs":
+            blackbuildcoords[1] = [0,0];
+            break;
+    }   
+}
 //OnClick for button on popup menu to put the white stading stone on selected hex
 document.getElementById("btnWhiteStone").onclick = function() {
-    for (i in elements) {
-        i.build = "";
+    removeBuildsFromSelectedElem(selectedElem);
+    for (var i=0;i<elements.length;i++) {
+        elements[i].build = "";
     }
+    
     whitebuildcoords[0] = selectedElem;
     elements.find(x => ((x.id[0] == whitebuildcoords[0][0]) &&  (x.id[1] == whitebuildcoords[0][1]))).build = "wt";
     ctxBuild.setTransform(1,0,0,1,0,0);
@@ -864,9 +1403,11 @@ document.getElementById("btnWhiteStone").onclick = function() {
 };
 //OnClick for button on popup menu to put the white shack on selected hex
 document.getElementById("btnWhiteShack").onclick = function() {
-    for (i in elements) {
-        i.build = "";
+    removeBuildsFromSelectedElem(selectedElem);
+    for (var i=0;i<elements.length;i++) {
+        elements[i].build = "";
     }
+   
     whitebuildcoords[1] = selectedElem;
     elements.find(x => ((x.id[0] == whitebuildcoords[1][0]) &&  (x.id[1] == whitebuildcoords[1][1]))).build = "ws";
     ctxBuild.setTransform(1,0,0,1,0,0);
@@ -881,9 +1422,11 @@ document.getElementById("btnWhiteShack").onclick = function() {
 };
 //OnClick for button on popup menu to put the green stading stone on selected hex
 document.getElementById("btnGreenStone").onclick = function() {
-    for (i in elements) {
-        i.build = "";
+    removeBuildsFromSelectedElem(selectedElem);
+    for (var i=0;i<elements.length;i++) {
+        elements[i].build = "";
     }
+    
     greenbuildcoords[0] = selectedElem;
     elements.find(x => ((x.id[0] == greenbuildcoords[0][0]) &&  (x.id[1] == greenbuildcoords[0][1]))).build = "gt";
     ctxBuild.setTransform(1,0,0,1,0,0);
@@ -898,9 +1441,11 @@ document.getElementById("btnGreenStone").onclick = function() {
 };
 //OnClick for button on popup menu to put the green shack on selected hex
 document.getElementById("btnGreenShack").onclick = function() {
-    for (i in elements) {
-        i.build = "";
+    removeBuildsFromSelectedElem(selectedElem);
+    for (var i=0;i<elements.length;i++) {
+        elements[i].build = "";
     }
+    
     greenbuildcoords[1] = selectedElem;
     elements.find(x => ((x.id[0] == greenbuildcoords[1][0]) &&  (x.id[1] == greenbuildcoords[1][1]))).build = "gs";
     ctxBuild.setTransform(1,0,0,1,0,0);
@@ -915,9 +1460,11 @@ document.getElementById("btnGreenShack").onclick = function() {
 };
 //OnClick for button on popup menu to put the blue stading stone on selected hex
 document.getElementById("btnBlueStone").onclick = function() {
-    for (i in elements) {
-        i.build = "";
+    removeBuildsFromSelectedElem(selectedElem);
+    for (var i=0;i<elements.length;i++) {
+        elements[i].build = "";
     }
+    
     bluebuildcoords[0] = selectedElem;
     elements.find(x => ((x.id[0] == bluebuildcoords[0][0]) &&  (x.id[1] == bluebuildcoords[0][1]))).build = "bt";
     ctxBuild.setTransform(1,0,0,1,0,0);
@@ -932,9 +1479,11 @@ document.getElementById("btnBlueStone").onclick = function() {
 };
 //OnClick for button on popup menu to put the blue shack on selected hex
 document.getElementById("btnBlueShack").onclick = function() {
-    for (i in elements) {
-        i.build = "";
+    removeBuildsFromSelectedElem(selectedElem);
+    for (var i=0;i<elements.length;i++) {
+        elements[i].build = "";
     }
+   
     bluebuildcoords[1] = selectedElem;
     elements.find(x => ((x.id[0] == bluebuildcoords[1][0]) &&  (x.id[1] == bluebuildcoords[1][1]))).build = "bs";
     ctxBuild.setTransform(1,0,0,1,0,0);
@@ -949,9 +1498,11 @@ document.getElementById("btnBlueShack").onclick = function() {
 };
 //OnClick for button on popup menu to put the black stading stone on selected hex
 document.getElementById("btnBlackStone").onclick = function() {
-    for (i in elements) {
-        i.build = "";
+    removeBuildsFromSelectedElem(selectedElem);
+    for (var i=0;i<elements.length;i++) {
+        elements[i].build = "";
     }
+    
     blackbuildcoords[0] = selectedElem;
     elements.find(x => ((x.id[0] == blackbuildcoords[0][0]) &&  (x.id[1] == blackbuildcoords[0][1]))).build = "xt";
     ctxBuild.setTransform(1,0,0,1,0,0);
@@ -966,9 +1517,11 @@ document.getElementById("btnBlackStone").onclick = function() {
 };
 //OnClick for button on popup menu to put the black shack on selected hex
 document.getElementById("btnBlackShack").onclick = function() {
-    for (i in elements) {
-        i.build = "";
+    removeBuildsFromSelectedElem(selectedElem);
+    for (var i=0;i<elements.length;i++) {
+        elements[i].build = "";
     }
+    
     blackbuildcoords[1] = selectedElem;
     elements.find(x => ((x.id[0] == blackbuildcoords[1][0]) &&  (x.id[1] == blackbuildcoords[1][1]))).build = "xs";
     ctxBuild.setTransform(1,0,0,1,0,0);
@@ -984,6 +1537,7 @@ document.getElementById("btnBlackShack").onclick = function() {
 //OnClick for button on popup menu to remove buildings on selected hex
 document.getElementById("btnNoBuild").onclick = function() {
     var hexBuilds = elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).build;
+    
     switch(hexBuilds){
         case "wt":
             whitebuildcoords[0] = [0,0];
@@ -1010,8 +1564,8 @@ document.getElementById("btnNoBuild").onclick = function() {
             blackbuildcoords[1] = [0,0];
             break;
     }
-    for (i in elements) {
-        i.build = "";
+    for (var i=0;i<elements.length;i++) {
+        elements[i].build = "";
     }
     //blackbuildcoords[1] = selectedElem;
     
@@ -1028,21 +1582,21 @@ document.getElementById("btnNoBuild").onclick = function() {
 //OnClick for button to generate random board
 document.getElementById("newBoard").onclick = function() {
     //genNewBoard()
-    document.getElementById("newBoard").disabled = true;
-    document.getElementById("boardControls").classList.add("disabled");
+    //document.getElementById("newBoard").disabled = true;
+    document.getElementById("custBoard").classList.add("disabled");
     gameModeBox.showModal();
     };
 //OnClick for button on popup menu to generate random normal map
 document.getElementById("btnNormalMode").onclick = function() {
     genNewBoard(0);
     gameModeBox.close();
-    document.getElementById("newGame").disabled = false;
+    //document.getElementById("newGame").disabled = false;
 };
 //OnClick for button on popup menu to generate random advanced map
 document.getElementById("btnAdvMode").onclick = function() {
     genNewBoard(1);
     gameModeBox.close();
-    document.getElementById("newGame").disabled = false;
+    //document.getElementById("newGame").disabled = false;
     };
 //OnClick for checkbox to flip tile 1 (top left)
 tileOneFlip.onclick = function() {
@@ -1505,7 +2059,7 @@ document.getElementById("btnP1Cube").onclick = function() {
         }
     }
     tempTokensArr.push("p1c");
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
@@ -1519,7 +2073,7 @@ document.getElementById("btnP2Cube").onclick = function() {
         }
     }
     tempTokensArr.push("p2c");
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
@@ -1533,7 +2087,7 @@ document.getElementById("btnP3Cube").onclick = function() {
         }
     }
     tempTokensArr.push("p3c");
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
@@ -1547,7 +2101,7 @@ document.getElementById("btnP4Cube").onclick = function() {
         }
     }
     tempTokensArr.push("p4c");
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
@@ -1561,7 +2115,7 @@ document.getElementById("btnP5Cube").onclick = function() {
         }
     }
     tempTokensArr.push("p5c");
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
@@ -1575,7 +2129,7 @@ document.getElementById("btnP1Disk").onclick = function() {
         }
     }
     tempTokensArr.push("p1d");
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
@@ -1589,7 +2143,7 @@ document.getElementById("btnP2Disk").onclick = function() {
         }
     }
     tempTokensArr.push("p2d");
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
@@ -1603,7 +2157,7 @@ document.getElementById("btnP3Disk").onclick = function() {
         }
     }
     tempTokensArr.push("p3d");
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
@@ -1617,7 +2171,7 @@ document.getElementById("btnP4Disk").onclick = function() {
         }
     }
     tempTokensArr.push("p4d");
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
@@ -1631,29 +2185,400 @@ document.getElementById("btnP5Disk").onclick = function() {
         }
     }
     tempTokensArr.push("p5d");
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
 //OnClick for button on popup menu to remove player tokens from the selected hex
 document.getElementById("btnNoToken").onclick = function() {
     elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces = [];
-    drawTokens(false);
+    drawTokens(solShown);
     console.log()
     selectHexItem.close();        
 };
+var customGameLoaded = true;
+function findBlackBuilds(){
+    blackBuildPrec = elements.find(x => ((x.build == "xt" || x.build == "xs")))
+    if (blackBuildPrec === undefined){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
 //OnClick for New Game button to create a new game using the map showing on the canvas
 document.getElementById("newGame").onclick = function(){
-    if (jsonSetup != ""){
-        selectPlayerCount.showModal();    
+    if ((jsonSetup != "") ){
+        selectPlayerCount.showModal(); 
+        document.getElementById("newBoard").disabled = true;
+        document.getElementById("startGame").disabled = false;
+        document.getElementById("boardControls").classList.add("disabled");
+        document.getElementById("hexBuildings").classList.add("disabled");   
+    }
+    else if (customGameLoaded == true){
+        //console.log(document.getElementById("clueP1").selectedIndex)
+        if (document.getElementById("clueP1").selectedIndex < 1 || document.getElementById("clueP2").selectedIndex < 1 || document.getElementById("clueP3").selectedIndex < 1){
+            document.getElementById("hintBoxText").innerText = "For a Custom Game, please select clues for the number of players you want to play with";
+            document.getElementById("hintBox").showModal();
+        }
+        else if (currentGameDest == [0,0]){
+            document.getElementById("hintBoxText").innerText = "For a Custom Game, select a destination hex";
+            document.getElementById("hintBox").showModal();    
+        }
+        else if (document.getElementById("clueP4").selectedIndex < 1 && document.getElementById("clueP5").selectedIndex < 1){
+            playerCount = 3;
+            currentGameHint = "";
+
+            p1Rule = document.getElementById("clueP1").options[document.getElementById("clueP1").selectedIndex].value;
+            p2Rule = document.getElementById("clueP2").options[document.getElementById("clueP2").selectedIndex].value;
+            p3Rule = document.getElementById("clueP3").options[document.getElementById("clueP3").selectedIndex].value;
+            currentGameRules = [p1Rule,p2Rule,p3Rule] 
+
+            if (findBlackBuilds()){
+                gameMode = 1;
+            }       
+            else{
+                gameMode = 0;
+            }
+
+            tileOneSelected = tileOneSelector.options[tileOneSelector.selectedIndex].value;
+            tileTwoSelected = tileTwoSelector.options[tileTwoSelector.selectedIndex].value ;
+            tileThreeSelected = tileThreeSelector.options[tileThreeSelector.selectedIndex].value;
+            tileFourSelected = tileFourSelector.options[tileFourSelector.selectedIndex].value;
+            tileFiveSelected = tileFiveSelector.options[tileFiveSelector.selectedIndex].value;
+            tileSixSelected = tileSixSelector.options[tileSixSelector.selectedIndex].value;
+            if (tileOneFlip.checked){
+                tileOneSelected = tileOneSelected + 6;
+            }
+            if (tileTwoFlip.checked){
+                tileTwoSelected = tileTwoSelected + 6;
+            }
+            if (tileThreeFlip.checked){
+                tileThreeSelected = tileThreeSelected + 6;
+            }
+            if (tileFourFlip.checked){
+                tileFourSelected = tileFourSelected + 6;
+            }
+            if (tileFiveFlip.checked){
+                tileFiveSelected = tileFiveSelected + 6;
+            }
+            if (tileSixFlip.checked){
+                tileSixSelected = tileSixSelected + 6;
+            }
+            tempStr = ""
+            tempStr = tempStr + tileOneSelected.toString(16);
+            tempStr = tempStr + tileTwoSelected.toString(16);
+            tempStr = tempStr + tileThreeSelected.toString(16);
+            tempStr = tempStr + tileFourSelected.toString(16);
+            tempStr = tempStr + tileFiveSelected.toString(16);
+            tempStr = tempStr + tileSixSelected.toString(16);
+            tempStr = tempStr + (whitebuildcoords[0][1]-1).toString(16);
+            tempStr = tempStr + (whitebuildcoords[0][0]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[0][1]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[0][0]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[0][1]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[0][0]-1).toString(16);
+            if (gameMode == 1){
+                tempStr = tempStr + (blackbuildcoords[0][1]-1).toString(16);
+                tempStr = tempStr + (blackbuildcoords[0][0]-1).toString(16);
+            }
+            tempStr = tempStr + (whitebuildcoords[1][1]-1).toString(16);
+            tempStr = tempStr + (whitebuildcoords[1][0]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[1][1]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[1][0]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[1][1]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[1][0]-1).toString(16);
+            if (gameMode == 1){
+                tempStr = tempStr + (blackbuildcoords[1][1]-1).toString(16);
+                tempStr = tempStr + (blackbuildcoords[1][0]-1).toString(16);
+            }
+            mapCode = tempStr.toUpperCase();
+            resetCustomBoardOptions()
+            //console.log(tileOrder)
+            /*createGridLayout(tileOrder,flip);
+            drawGrid(colors,habs);
+            drawHabs(createPoly(EDGES,0.9*RADIUS),habs);
+            drawBuildings(whitebuildcoords,whitebuild);
+            drawBuildings(greenbuildcoords,greenbuild);
+            drawBuildings(bluebuildcoords,bluebuild);*/
+            drawTokens(false)
+
+        
+
+            solShown = false;
+            newGameRecord = {
+                "map" : mapCode,
+                "players": playerCount,
+                "mode" : gameMode,
+                "dest" : currentGameDest,
+                "rules": currentGameRules,
+                "hint": currentGameHint,
+                "turns": []
+
+            }
+            console.log(newGameRecord)
+            currentGameRecord = newGameRecord;
+            document.getElementById("boardControls").classList.add("disabled");
+            document.getElementById("hexBuildings").classList.add("disabled")
+            document.getElementById("btnP1Disk").disabled = true;
+            document.getElementById("btnP2Disk").disabled = true;
+            document.getElementById("btnP3Disk").disabled = true;
+            document.getElementById("btnP4Disk").disabled = true;
+            document.getElementById("btnP5Disk").disabled = true;
+            document.getElementById("newGame").disabled = true;
+            document.getElementById("p1Rule").disabled = true;
+            document.getElementById("p2Rule").disabled = true;
+            document.getElementById("p3Rule").disabled = true;
+            document.getElementById("p4Rule").disabled = true;
+            document.getElementById("p5Rule").disabled = true;
+            document.getElementById("endTurn").disabled = false;
+            document.getElementById("btnNoToken").disabled = true;
+            document.getElementById("btnNoPlayerToken").disabled = false;
+            document.getElementById("passTurnText").innerText = "Please Pass to Player 1";
+            document.getElementById("passTurn").showModal();
+        }
+        else if (document.getElementById("clueP5").selectedIndex < 1){
+            playerCount = 4;
+            currentGameHint = "";
+
+            p1Rule = document.getElementById("clueP1").options[document.getElementById("clueP1").selectedIndex].value;
+            p2Rule = document.getElementById("clueP2").options[document.getElementById("clueP2").selectedIndex].value;
+            p3Rule = document.getElementById("clueP3").options[document.getElementById("clueP3").selectedIndex].value;
+            p4Rule = document.getElementById("clueP4").options[document.getElementById("clueP4").selectedIndex].value;
+            currentGameRules = [p1Rule,p2Rule,p3Rule,p4Rule] 
+
+            if (findBlackBuilds()){
+                gameMode = 1;
+            }       
+            else{
+                gameMode = 0;
+            }
+
+            tileOneSelected = tileOneSelector.options[tileOneSelector.selectedIndex].value;
+            tileTwoSelected = tileTwoSelector.options[tileTwoSelector.selectedIndex].value ;
+            tileThreeSelected = tileThreeSelector.options[tileThreeSelector.selectedIndex].value;
+            tileFourSelected = tileFourSelector.options[tileFourSelector.selectedIndex].value;
+            tileFiveSelected = tileFiveSelector.options[tileFiveSelector.selectedIndex].value;
+            tileSixSelected = tileSixSelector.options[tileSixSelector.selectedIndex].value;
+            if (tileOneFlip.checked){
+                tileOneSelected = parseInt(tileOneSelected) + 6;
+                tileOneSelected = tileOneSelected.toString()
+            }
+            if (tileTwoFlip.checked){
+                tileTwoSelected = parseInt(tileTwoSelected) + 6;
+                tileTwoSelected = tileTwoSelected.toString()
+            }
+            if (tileThreeFlip.checked){
+                tileThreeSelected = parseInt(tileThreeSelected) + 6;
+                tileThreeSelected = tileThreeSelected.toString()
+            }
+            if (tileFourFlip.checked){
+                tileFourSelected = parseInt(tileFourSelected) + 6;
+                tileFourSelected = tileFourSelected.toString()
+            }
+            if (tileFiveFlip.checked){
+                tileFiveSelected = parseInt(tileFiveSelected) + 6;
+                tileFiveSelected = tileFiveSelected.toString()
+            }
+            if (tileSixFlip.checked){
+                tileSixSelected = parseInt(tileSixSelected) + 6;
+                tileSixSelected = tileSixSelected.toString()
+            }
+            tempStr = ""
+            tempStr = tempStr + tileOneSelected.toString(16);
+            tempStr = tempStr + tileTwoSelected.toString(16);
+            tempStr = tempStr + tileThreeSelected.toString(16);
+            tempStr = tempStr + tileFourSelected.toString(16);
+            tempStr = tempStr + tileFiveSelected.toString(16);
+            tempStr = tempStr + tileSixSelected.toString(16);
+            tempStr = tempStr + (whitebuildcoords[0][1]-1).toString(16);
+            tempStr = tempStr + (whitebuildcoords[0][0]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[0][1]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[0][0]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[0][1]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[0][0]-1).toString(16);
+            if (gameMode == 1){
+                tempStr = tempStr + (blackbuildcoords[0][1]-1).toString(16);
+                tempStr = tempStr + (blackbuildcoords[0][0]-1).toString(16);
+            }
+            tempStr = tempStr + (whitebuildcoords[1][1]-1).toString(16);
+            tempStr = tempStr + (whitebuildcoords[1][0]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[1][1]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[1][0]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[1][1]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[1][0]-1).toString(16);
+            if (gameMode == 1){
+                tempStr = tempStr + (blackbuildcoords[1][1]-1).toString(16);
+                tempStr = tempStr + (blackbuildcoords[1][0]-1).toString(16);
+            }
+            mapCode = tempStr.toUpperCase();
+            resetCustomBoardOptions()
+            //console.log(tileOrder)
+            /*createGridLayout(tileOrder,flip);
+            drawGrid(colors,habs);
+            drawHabs(createPoly(EDGES,0.9*RADIUS),habs);
+            drawBuildings(whitebuildcoords,whitebuild);
+            drawBuildings(greenbuildcoords,greenbuild);
+            drawBuildings(bluebuildcoords,bluebuild);*/
+            drawTokens(false)
+
+        
+
+            solShown = false;
+            newGameRecord = {
+                "map" : mapCode,
+                "players": playerCount,
+                "mode" : gameMode,
+                "dest" : currentGameDest,
+                "rules": currentGameRules,
+                "hint": currentGameHint,
+                "turns": []
+
+            }
+            console.log(newGameRecord)
+            currentGameRecord = newGameRecord;
+            document.getElementById("boardControls").classList.add("disabled");
+            document.getElementById("hexBuildings").classList.add("disabled")
+            document.getElementById("btnP1Disk").disabled = true;
+            document.getElementById("btnP2Disk").disabled = true;
+            document.getElementById("btnP3Disk").disabled = true;
+            document.getElementById("btnP4Disk").disabled = true;
+            document.getElementById("btnP5Disk").disabled = true;
+            document.getElementById("newGame").disabled = true;
+            document.getElementById("p1Rule").disabled = true;
+            document.getElementById("p2Rule").disabled = true;
+            document.getElementById("p3Rule").disabled = true;
+            document.getElementById("p4Rule").disabled = true;
+            document.getElementById("p5Rule").disabled = true;
+            document.getElementById("endTurn").disabled = false;
+            document.getElementById("btnNoToken").disabled = true;
+            document.getElementById("btnNoPlayerToken").disabled = false;
+            document.getElementById("passTurnText").innerText = "Please Pass to Player 1";
+            document.getElementById("passTurn").showModal();
+        }
+        else {
+            playerCount = 5;
+            currentGameHint = "";
+
+            p1Rule = document.getElementById("clueP1").options[document.getElementById("clueP1").selectedIndex].value;
+            p2Rule = document.getElementById("clueP2").options[document.getElementById("clueP2").selectedIndex].value;
+            p3Rule = document.getElementById("clueP3").options[document.getElementById("clueP3").selectedIndex].value;
+            p4Rule = document.getElementById("clueP4").options[document.getElementById("clueP4").selectedIndex].value;
+            p5Rule = document.getElementById("clueP5").options[document.getElementById("clueP5").selectedIndex].value;
+            currentGameRules = [p1Rule,p2Rule,p3Rule,p4Rule,p5Rule] 
+
+            if (findBlackBuilds()){
+                gameMode = 1;
+            }       
+            else{
+                gameMode = 0;
+            }
+
+            tileOneSelected = tileOneSelector.options[tileOneSelector.selectedIndex].value;
+            tileTwoSelected = tileTwoSelector.options[tileTwoSelector.selectedIndex].value ;
+            tileThreeSelected = tileThreeSelector.options[tileThreeSelector.selectedIndex].value;
+            tileFourSelected = tileFourSelector.options[tileFourSelector.selectedIndex].value;
+            tileFiveSelected = tileFiveSelector.options[tileFiveSelector.selectedIndex].value;
+            tileSixSelected = tileSixSelector.options[tileSixSelector.selectedIndex].value;
+            if (tileOneFlip.checked){
+                tileOneSelected = tileOneSelected + 6;
+            }
+            if (tileTwoFlip.checked){
+                tileTwoSelected = tileTwoSelected + 6;
+            }
+            if (tileThreeFlip.checked){
+                tileThreeSelected = tileThreeSelected + 6;
+            }
+            if (tileFourFlip.checked){
+                tileFourSelected = tileFourSelected + 6;
+            }
+            if (tileFiveFlip.checked){
+                tileFiveSelected = tileFiveSelected + 6;
+            }
+            if (tileSixFlip.checked){
+                tileSixSelected = tileSixSelected + 6;
+            }
+            tempStr = ""
+            tempStr = tempStr + tileOneSelected.toString(16);
+            tempStr = tempStr + tileTwoSelected.toString(16);
+            tempStr = tempStr + tileThreeSelected.toString(16);
+            tempStr = tempStr + tileFourSelected.toString(16);
+            tempStr = tempStr + tileFiveSelected.toString(16);
+            tempStr = tempStr + tileSixSelected.toString(16);
+            tempStr = tempStr + (whitebuildcoords[0][1]-1).toString(16);
+            tempStr = tempStr + (whitebuildcoords[0][0]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[0][1]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[0][0]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[0][1]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[0][0]-1).toString(16);
+            if (gameMode == 1){
+                tempStr = tempStr + (blackbuildcoords[0][1]-1).toString(16);
+                tempStr = tempStr + (blackbuildcoords[0][0]-1).toString(16);
+            }
+            tempStr = tempStr + (whitebuildcoords[1][1]-1).toString(16);
+            tempStr = tempStr + (whitebuildcoords[1][0]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[1][1]-1).toString(16);
+            tempStr = tempStr + (greenbuildcoords[1][0]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[1][1]-1).toString(16);
+            tempStr = tempStr + (bluebuildcoords[1][0]-1).toString(16);
+            if (gameMode == 1){
+                tempStr = tempStr + (blackbuildcoords[1][1]-1).toString(16);
+                tempStr = tempStr + (blackbuildcoords[1][0]-1).toString(16);
+            }
+            mapCode = tempStr.toUpperCase();
+            resetCustomBoardOptions()
+            //console.log(tileOrder)
+            /*createGridLayout(tileOrder,flip);
+            drawGrid(colors,habs);
+            drawHabs(createPoly(EDGES,0.9*RADIUS),habs);
+            drawBuildings(whitebuildcoords,whitebuild);
+            drawBuildings(greenbuildcoords,greenbuild);
+            drawBuildings(bluebuildcoords,bluebuild);*/
+            drawTokens(false)
+
+        
+
+            solShown = false;
+            newGameRecord = {
+                "map" : mapCode,
+                "players": playerCount,
+                "mode" : gameMode,
+                "dest" : currentGameDest,
+                "rules": currentGameRules,
+                "hint": currentGameHint,
+                "turns": []
+
+            }
+            console.log(newGameRecord)
+            currentGameRecord = newGameRecord;
+            document.getElementById("boardControls").classList.add("disabled");
+            document.getElementById("hexBuildings").classList.add("disabled")
+            document.getElementById("btnP1Disk").disabled = true;
+            document.getElementById("btnP2Disk").disabled = true;
+            document.getElementById("btnP3Disk").disabled = true;
+            document.getElementById("btnP4Disk").disabled = true;
+            document.getElementById("btnP5Disk").disabled = true;
+            document.getElementById("newGame").disabled = true;
+            document.getElementById("p1Rule").disabled = true;
+            document.getElementById("p2Rule").disabled = true;
+            document.getElementById("p3Rule").disabled = true;
+            document.getElementById("p4Rule").disabled = true;
+            document.getElementById("p5Rule").disabled = true;
+            document.getElementById("endTurn").disabled = false;
+            document.getElementById("btnNoToken").disabled = true;
+            document.getElementById("btnNoPlayerToken").disabled = false;
+            document.getElementById("passTurnText").innerText = "Please Pass to Player 1";
+            document.getElementById("passTurn").showModal();
+        }         
     }
     else{
         noGameLoaded.showModal();
+        document.getElementById("newBoard").disabled = true;
+        document.getElementById("startGame").disabled = false;
+        document.getElementById("boardControls").classList.add("disabled");
+        document.getElementById("hexBuildings").classList.add("disabled");
     }
-    document.getElementById("newBoard").disabled = true;
-    document.getElementById("startGame").disabled = false;
-    document.getElementById("boardControls").classList.add("disabled");
-    document.getElementById("hexBuildings").classList.add("disabled");
+    
 
 };
 
@@ -1808,6 +2733,15 @@ document.getElementById("endNoSolution").onclick = function(){
     elements.forEach(function (hex) {
         hex.pieces = [];
     });
+    document.getElementById("p1RuleText").innerText = "";
+    document.getElementById("p2RuleText").innerText = "";
+    document.getElementById("p3RuleText").innerText = "";
+    if ((playerCount == 4)||(playerCount == 5)){
+        document.getElementById("p4RuleText").innerText = "";
+    }
+    if(playerCount == 5){
+        document.getElementById("p5RuleText").innerText = "";
+    }
     document.getElementById("p1Rule").disabled = true;
     document.getElementById("p2Rule").disabled = true;
     document.getElementById("p3Rule").disabled = true;
@@ -1830,6 +2764,8 @@ document.getElementById("resetNo").onclick = function(){
 //OnClick for Yes button on reset board popup to reset the board
 document.getElementById("resetYes").onclick = function(){
     genEmptyBoard();
+    resetCustomBoardOptions();
+    solShown = false;
     document.getElementById("p1RuleText").innerText = '';
     document.getElementById("p2RuleText").innerText = '';
     document.getElementById("p3RuleText").innerText = '';
@@ -1840,6 +2776,7 @@ document.getElementById("resetYes").onclick = function(){
         document.getElementById("p5RuleText").innerText = '';
     }
     document.getElementById("boardControls").classList.remove("disabled");
+    document.getElementById("custBoard").classList.remove("disabled");
     document.getElementById("hexBuildings").classList.remove("disabled");
     document.getElementById("newBoard").disabled = false;
     document.getElementById("resetConfirm").close();
@@ -1868,6 +2805,7 @@ function recordTurn(gameRecord,round,turn,player,move,hex,tokenUpdate){
 }
 //OnClick for the Start Game button to start the game
 document.getElementById("startGame").onclick = function(){
+    solShown = false;
     newGameRecord = {
         "map" : mapCode,
         "players": playerCount,
@@ -1879,6 +2817,11 @@ document.getElementById("startGame").onclick = function(){
 
     }
     currentGameRecord = newGameRecord;
+    document.getElementById("btnP1Disk").disabled = true;
+    document.getElementById("btnP2Disk").disabled = true;
+    document.getElementById("btnP3Disk").disabled = true;
+    document.getElementById("btnP4Disk").disabled = true;
+    document.getElementById("btnP5Disk").disabled = true;
     document.getElementById("newGame").disabled = true;
     document.getElementById("p1Rule").disabled = true;
     document.getElementById("p2Rule").disabled = true;
@@ -2847,11 +3790,11 @@ document.getElementById("questPieceYes").onclick = function() {
             currentTokenUpdate.push("p3d");
             break;
         case 4:
-            tokensOnHex.push("p2d");
+            tokensOnHex.push("p4d");
             currentTokenUpdate.push("p4d");
             break;
         case 5:
-            tokensOnHex.push("p2d");
+            tokensOnHex.push("p5d");
             currentTokenUpdate.push("p5d");
             break;
      } 
@@ -2986,6 +3929,8 @@ document.getElementById("takeTurnSearch").onclick = function(){
         break;
     }
     elements.find(x => ((x.id[0] == selectedElem[0]) &&  (x.id[1] == selectedElem[1]))).pieces.push(piece);
+    currentTokenUpdate = [];
+    currentTokenUpdate.push(piece);
     drawTokens(false);
     ctxTokens.fillStyle = "#ffffff00";
     ctxTokens.strokeStyle = "#6100fc";
@@ -3027,6 +3972,9 @@ document.getElementById("passTurnBtnSearch").onclick = function(){
             inGame = false;
             document.getElementById("hintBoxText").innerText = "Player " + currentPlayer + " found the cryptid.";
             document.getElementById("hintBox").showModal();
+            recordTurn(currentGameRecord,1,currentTurn,currentPlayer,"search",selectedElem,currentTokenUpdate);
+            console.log(currentGameRecord);
+            document.getElementById("gameInstructionsText").innerText = currentGameRecord;
             currentPlayer = 0;
             document.getElementById("passTurnSearch").close();
         }
@@ -3050,6 +3998,7 @@ document.getElementById("passTurnBtnSearch").onclick = function(){
             break;
                     
     }
+    
     document.getElementById("searchPlacePieceText").innerText = "The Hex selected id highlighted. Your clue is the following: \n" + clue + "\n Is this a valid space according to your clue?"
     document.getElementById("searchPlacePiece").showModal();
     document.getElementById("passTurnSearch").close();
@@ -3176,4 +4125,137 @@ document.getElementById("searchPieceNo").onclick = function(){
     cubePlaced = true;
     console.log("Cube Placed")
     document.getElementById("searchPlacePiece").close();
+}
+var TurnNum;
+function reviewTestGame(){
+    TurnNum=0;
+    gameMode = 0;
+    url = "https://www.playcryptid.com/php/getGame.php";
+    ctxBoard.setTransform(1,0,0,1,0,0);
+    ctxBoard.clearRect(0, 0,
+                board.width, board.height);
+    ctxBuild.setTransform(1,0,0,1,0,0);
+    ctxBuild.clearRect(0, 0,
+                buildingsBoard.width, buildingsBoard.height);
+    ctxTokens.setTransform(1,0,0,1,0,0);
+    ctxTokens.clearRect(0, 0,
+                tokenBoard.width, tokenBoard.height);
+    elements = [];
+    whitebuildcoords = [[0,0],[0,0]];
+    bluebuildcoords = [[0,0],[0,0]];
+    greenbuildcoords = [[0,0],[0,0]];
+    blackbuildcoords = [[0,0],[0,0]];
+    habs = [];
+    colors = [];
+    console.log(habs);
+    console.log(colors);
+    flip = [0,0,0,0,0,0]
+    tileOrder = [1,2,3,4,5,6];
+
+    var temp;
+    if (p.mode==0){
+        temp= "intro_"
+        temp=temp.concat(p.map);
+    }else{
+        temp="normal_"
+        temp=temp.concat(p.map);
+    }
+    console.log(temp);
+    drawBoard(temp);
+
+    const player= p.players;
+
+    const game= document.getElementById("gameInstructionsText");
+    game.innerHTML='Number of players ='+player;
+    currentGameDest= p.dest;
+   
+    const array= p.turns;
+    var i =0;
+    var tempTokensArr;
+    while(true){
+        if(array[i].move!="setup"){
+            break;
+        }else{
+            var rh= array[i].hex;
+            tempTokensArr = elements.find(x => ((x.id[0] == rh[0]) &&  (x.id[1] == rh[1]))).pieces;
+            elements.find(x => ((x.id[0] == rh[0]) &&  (x.id[1] == rh[1]))).pieces.push(array[i].tokenUpdate[0])
+        }
+        i+=1;
+    }
+    drawTokens(true);
+
+}
+document.getElementById("loadsavedgame").onclick = function()
+{reviewTestGame();};
+
+var tempstring="";
+function nextturn(){
+    TurnNum+=1;
+    const array= p.turns;
+    const turnIndex = array.findIndex(x=>((x.turn==TurnNum) &&(x.round>0)));
+    const tempturn= array[turnIndex];
+    tempstring="Current Player: "+tempturn.player+"\n";
+    tempstring+= "Current move: "+tempturn.move+"\n";
+    tempstring+= "Current Hex: "+tempturn.hex+"\n";
+    //drawTokens(true,tempturn.hex)
+    //tempstring+="Response "+tem+"\n";
+    //document.getElementById("gameInstructionsText").innerHTML=tempstring
+    //console.log("")
+    //console.log(tempturn.tokenUpdate)
+    elements.find(x => ((x.id[0] == tempturn.hex[0]) &&  (x.id[1] == tempturn.hex[1]))).pieces.push(tempturn.tokenUpdate[0])
+    
+    if(tempturn.move=="quest"){
+
+        tempstring+= "Player questioned: player "+tempturn.tokenUpdate[0].charAt(1)+" placed a ";
+        if(tempturn.tokenUpdate[0].charAt(2)=="c"){
+            tempstring+="cube"+"\n";
+            const nextTurn = array[turnIndex+1]
+            elements.find(x => ((x.id[0] == nextTurn.hex[0]) &&  (x.id[1] == nextTurn.hex[1]))).pieces.push(nextTurn.tokenUpdate[0])
+            tempstring += "Player " + tempturn.player + " added a cube to " + nextTurn.hex + "\n";
+            drawTokensReview(true,[tempturn.hex[1],tempturn.hex[0]],[nextTurn.hex[1],nextTurn.hex[0]]);
+        }else{
+            tempstring+="disk"+"\n";
+            drawTokensReview(true,[tempturn.hex[1],tempturn.hex[0]],null);
+        }
+    }else if(tempturn.move=="search"){
+        var yo="";
+        for (let i = 0; i < tempturn.tokenUpdate.length; i++) {
+            elements.find(x => ((x.id[0] == tempturn.hex[0]) &&  (x.id[1] == tempturn.hex[1]))).pieces.push(tempturn.tokenUpdate[i])
+            if(tempturn.tokenUpdate[i].charAt(2)!="c"){
+                yo+=" Player "+tempturn.tokenUpdate[i].charAt(1)+" placed a disk,"+"\n";
+                
+                
+            }
+            else{
+                yo+=" Player "+tempturn.tokenUpdate[i].charAt(1)+" placed a cube,"+"\n";
+                const nextTurn = array[turnIndex+1]
+                elements.find(x => ((x.id[0] == nextTurn.hex[0]) &&  (x.id[1] == nextTurn.hex[1]))).pieces.push(nextTurn.tokenUpdate[0])
+                tempstring += "Player " + tempturn.player + " added a cube to " + nextTurn.hex + "\n";
+                drawTokensReview(true,[tempturn.hex[1],tempturn.hex[0]],[nextTurn.hex[1],nextTurn.hex[0]]);
+                break;
+            }
+        }
+        drawTokensReview(true,[tempturn.hex[1],tempturn.hex[0]],null);
+        tempstring+="Player searched. Responses:[" +yo+"]\n";
+    }
+    document.getElementById("gameInstructionsText").innerHTML= tempstring;
+}
+document.getElementById("nextturn").onclick= function(){
+    nextturn();
+}
+var solShown = false;
+document.getElementById("btnSetDest").onclick = function(){
+    currentGameDest =  [selectedElem[1],selectedElem[0]];
+    solShown = true;
+    drawTokens(true)
+    document.getElementById("selectHexItem").close();   
+}
+
+function resetCustomBoardOptions(){
+    document.getElementById("clueP1").options[0].selected = true;
+    document.getElementById("clueP2").options[0].selected = true;
+    document.getElementById("clueP3").options[0].selected = true;
+    document.getElementById("clueP4").options[0].selected = true;
+    document.getElementById("clueP5").options[0].selected = true;
+
 }
