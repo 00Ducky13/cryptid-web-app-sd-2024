@@ -1,7 +1,7 @@
 /* Place your JavaScript in this file */
 
 
-/*const p= {
+const p= {
     "map": "24915C013A535817068783",
     "players": 3,
     "mode": 1,
@@ -201,9 +201,9 @@
             ]
         }
     ]
-}*/
+}
 
-const p ={
+/*const p ={
     "map": "53478C7A623B076B13",
     "players": 3,
     "mode": 0,
@@ -364,7 +364,7 @@ const p ={
             ]
         }
     ]
-}
+}*/
 
 
 
@@ -394,6 +394,11 @@ const forest = "#36ba38bf";
 const swamp = "#422282bf";
 const desert = "#dbc13dbf";
 const mount = "#8f8f8fbf";
+const waterDull = "#00c3d97f";
+const forestDull = "#36ba387f";
+const swampDull = "#4222827f";
+const desertDull = "#dbc13d7f";
+const mountDull = "#8f8f8f7f";
 const whitebuild = "#ffffff";
 const bluebuild = "#0008fc";
 const greenbuild = "#004721";
@@ -423,6 +428,18 @@ const cols5 = [swamp,swamp,swamp,mount,mount,mount,swamp,desert,desert,water,mou
 const habs5 = [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1]
 const cols6 = [desert,desert,swamp,swamp,swamp,forest,mount,mount,swamp,swamp,forest,forest,mount,water,water,water,water,forest];
 const habs6 = [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0]
+const cols1Dull = [waterDull, waterDull, waterDull, waterDull, forestDull, forestDull, swampDull, swampDull, waterDull, desertDull, forestDull, forestDull, swampDull, swampDull, desertDull, desertDull, desertDull, forestDull];
+
+const cols2Dull = [swampDull,forestDull,forestDull,forestDull,forestDull,forestDull,swampDull,swampDull,forestDull,desertDull,desertDull,desertDull,swampDull,mountDull,mountDull,mountDull,mountDull,desertDull];
+
+const cols3Dull = [swampDull,swampDull,forestDull,forestDull,forestDull,waterDull,swampDull,swampDull,forestDull,mountDull,waterDull,waterDull,mountDull,mountDull,mountDull,mountDull,waterDull,waterDull];
+
+const cols4Dull = [desertDull,desertDull,mountDull,mountDull,mountDull,mountDull,desertDull,desertDull,mountDull,waterDull,waterDull,waterDull,desertDull,desertDull,desertDull,forestDull,forestDull,forestDull];
+
+const cols5Dull = [swampDull,swampDull,swampDull,mountDull,mountDull,mountDull,swampDull,desertDull,desertDull,waterDull,mountDull,mountDull,desertDull,desertDull,waterDull,waterDull,waterDull,waterDull];
+
+const cols6Dull = [desertDull,desertDull,swampDull,swampDull,swampDull,forestDull,mountDull,mountDull,swampDull,swampDull,forestDull,forestDull,mountDull,waterDull,waterDull,waterDull,waterDull,forestDull];
+
 const tileOneSelector = document.getElementById("tileOne");
 const tileTwoSelector = document.getElementById("tileTwo");
 const tileThreeSelector = document.getElementById("tileThree");
@@ -812,6 +829,178 @@ if (gameMode == 1){
 document.getElementById("newBoard").disabled = false;
 document.getElementById("boardControls").classList.remove("disabled");
 }
+
+function drawBoardReview(key){
+    var jsonSplit = key.split("_");
+mapCode = jsonSplit[1];
+if (jsonSplit[0] == "normal"){
+    gameMode = 1;
+}
+var temp;
+console.log(mapCode)
+for(var i=0;i<6;i++){
+    temp = parseInt(mapCode[i],16);
+    if (temp >= 7){
+        flip[i] = 1;
+        tileOrder[i] = (temp -6);
+    }
+    else{
+        tileOrder[i] = (temp);
+    }
+    switch(i) {
+        case 0:
+            //tileOneSelector.options[0].selected = 'selected';
+            tileOneSelector.options[tileOrder[i]-1].selected = 'selected';
+            //console.log(tileOneSelector.options);
+            //tileOneSelector.value = toString(tileOrder[i]);
+            if (flip[i] == 1){
+                tileOneFlip.checked = true;
+            }
+            else{
+                tileOneFlip.checked = false;    
+            }
+            break;
+        case 1:
+            //tileOneSelector.options[0].selected = 'selected';
+            tileTwoSelector.options[tileOrder[i]-1].selected = 'selected';
+            //console.log(tileOneSelector.options);
+            //tileOneSelector.value = toString(tileOrder[i]);
+            if (flip[i] == 1){
+                tileTwoFlip.checked = true;
+            }
+            else{
+                tileTwoFlip.checked = false;    
+            }
+            break;
+        case 2:
+            //tileOneSelector.options[0].selected = 'selected';
+            tileThreeSelector.options[tileOrder[i]-1].selected = 'selected';
+            //console.log(tileOneSelector.options);
+            //tileOneSelector.value = toString(tileOrder[i]);
+            if (flip[i] == 1){
+                tileThreeFlip.checked = true;
+            }
+            else{
+                tileThreeFlip.checked = false;    
+            }
+            break;
+        case 3:
+            //tileOneSelector.options[0].selected = 'selected';
+            tileFourSelector.options[tileOrder[i]-1].selected = 'selected';
+            //console.log(tileOneSelector.options);
+            //tileOneSelector.value = toString(tileOrder[i]);
+            if (flip[i] == 1){
+                tileFourFlip.checked = true;
+            }
+            else{
+                tileFourFlip.checked = false;    
+            }
+            break;
+        case 4:
+            //tileOneSelector.options[0].selected = 'selected';
+            tileFiveSelector.options[tileOrder[i]-1].selected = 'selected';
+            //console.log(tileOneSelector.options);
+            //tileOneSelector.value = toString(tileOrder[i]);
+            if (flip[i] == 1){
+                tileFiveFlip.checked = true;
+            }
+            else{
+                tileFiveFlip.checked = false;    
+            }
+            break;
+        case 5:
+            //tileOneSelector.options[0].selected = 'selected';
+            tileSixSelector.options[tileOrder[i]-1].selected = 'selected';
+            //console.log(tileOneSelector.options);
+            //tileOneSelector.value = toString(tileOrder[i]);
+            if (flip[i] == 1){
+                tileSixFlip.checked = true;
+            }
+            else{
+                tileSixFlip.checked = false;    
+            }
+            break;
+    }
+    
+}
+console.log(tileOrder);
+console.log(flip);
+var buildings = mapCode.substring(6,mapCode.length);
+var tempArr = [0,0];
+tempArr = [parseInt(buildings[1],16)+1,parseInt(buildings[0],16)+1];
+//whitebuildcoords.push(tempArr);
+whitebuildcoords[0][0] = tempArr[0];
+whitebuildcoords[0][1] = tempArr[1];
+tempArr = [parseInt(buildings[3],16)+1,parseInt(buildings[2],16)+1];
+//greenbuildcoords.push(tempArr);
+greenbuildcoords[0][0] = tempArr[0];
+greenbuildcoords[0][1] = tempArr[1];
+tempArr = [parseInt(buildings[5],16)+1,parseInt(buildings[4],16)+1];
+//bluebuildcoords.push(tempArr);
+bluebuildcoords[0][0] = tempArr[0];
+bluebuildcoords[0][1] = tempArr[1];
+if (gameMode == 1){
+    tempArr = [parseInt(buildings[7],16)+1,parseInt(buildings[6],16)+1];
+    //blackbuildcoords.push(tempArr);
+    blackbuildcoords[0][0] = tempArr[0];
+    blackbuildcoords[0][1] = tempArr[1];
+    tempArr = [parseInt(buildings[9],16)+1,parseInt(buildings[8],16)+1];
+    //whitebuildcoords.push(tempArr);
+    whitebuildcoords[1][0] = tempArr[0];
+    whitebuildcoords[1][1] = tempArr[1];
+    tempArr = [parseInt(buildings[11],16)+1,parseInt(buildings[10],16)+1];
+    //greenbuildcoords.push(tempArr);
+    greenbuildcoords[1][0] = tempArr[0];
+    greenbuildcoords[1][1] = tempArr[1];
+    tempArr = [parseInt(buildings[13],16)+1,parseInt(buildings[12],16)+1];
+    //bluebuildcoords.push(tempArr);
+    bluebuildcoords[1][0] = tempArr[0];
+    bluebuildcoords[1][1] = tempArr[1];
+    tempArr = [parseInt(buildings[15],16)+1,parseInt(buildings[14],16)+1];
+    //blackbuildcoords.push(tempArr);
+    blackbuildcoords[1][0] = tempArr[0];
+    blackbuildcoords[1][1] = tempArr[1];
+}
+else{
+    tempArr = [parseInt(buildings[7],16)+1,parseInt(buildings[6],16)+1];
+    //whitebuildcoords.push(tempArr);
+    whitebuildcoords[1][0] = tempArr[0];
+    whitebuildcoords[1][1] = tempArr[1];
+    tempArr = [parseInt(buildings[9],16)+1,parseInt(buildings[8],16)+1];
+    //greenbuildcoords.push(tempArr);
+    greenbuildcoords[1][0] = tempArr[0];
+    greenbuildcoords[1][1] = tempArr[1];
+    tempArr = [parseInt(buildings[11],16)+1,parseInt(buildings[10],16)+1];
+    //bluebuildcoords.push(tempArr);
+    bluebuildcoords[1][0] = tempArr[0];
+    bluebuildcoords[1][1] = tempArr[1];    
+}
+createGridLayoutDull(tileOrder,flip);
+drawGrid(colors,habs);
+//drawGrid(1, 1, 6, 3, createPoly(EDGES,RADIUS), cols1,habs1);
+//drawGrid(7, 1, 6, 3, createPoly(EDGES,RADIUS), cols2,habs2);
+//drawGrid(1, 4, 6, 3, createPoly(EDGES,RADIUS), cols3,habs3);
+//drawGrid(7, 4, 6, 3, createPoly(EDGES,RADIUS), cols4,habs4);
+//drawGrid(1, 7, 6, 3, createPoly(EDGES,RADIUS), cols5,habs5);
+//drawGrid(7, 7, 6, 3, createPoly(EDGES,RADIUS), cols6,habs6);
+//habs = habs.concat(habs1);
+//habs = habs.concat(habs2);
+//habs = habs.concat(habs3);
+//habs = habs.concat(habs4);
+//habs = habs.concat(habs5);
+//habs = habs.concat(habs6);
+console.log(bluebuildcoords);
+drawHabs(createPoly(EDGES,0.9*RADIUS),habs);
+//drawBuildings(whitebuildcoords,whitebuild);
+drawBuildings(whitebuildcoords,whitebuild);
+drawBuildings(greenbuildcoords,greenbuild);
+drawBuildings(bluebuildcoords,bluebuild);
+if (gameMode == 1){
+    drawBuildings(blackbuildcoords,blackbuild);    
+}
+document.getElementById("newBoard").disabled = false;
+document.getElementById("boardControls").classList.remove("disabled");
+}
 //translate arrays saving board layout to something the rendering function uses
 //input: tileOrder-array saving order of tiles; flip-array saving orientation of tiles
 function createGridLayout(tileOrder,flip){
@@ -894,6 +1083,88 @@ function createGridLayout(tileOrder,flip){
 }}
     
 }
+
+function createGridLayoutDull(tileOrder,flip){
+    for(var i =0; i<tileOrder.length;i++){
+        console.log(tileOrder[i]);
+        console.log(flip[i]);
+        switch(tileOrder[i]) {
+        case 1:
+            if (flip[i]){
+                tempArr = cols1Dull.slice().reverse();
+                colors = colors.concat(tempArr);
+                tempArr = habs1.slice().reverse();
+                habs = habs.concat(tempArr);
+            }
+            else{
+                colors = colors.concat(cols1Dull);
+                habs = habs.concat(habs1);   
+            }
+            break;
+        case 2:
+            if (flip[i]){
+                tempArr = cols2Dull.slice().reverse();
+                colors = colors.concat(tempArr);
+                tempArr = habs2.slice().reverse();
+                habs = habs.concat(tempArr);
+            }
+            else{
+                colors = colors.concat(cols2Dull);
+                habs = habs.concat(habs2);   
+            }
+            break;
+        case 3:
+            if (flip[i]){
+                tempArr = cols3Dull.slice().reverse();
+                colors = colors.concat(tempArr);
+                tempArr = habs3.slice().reverse();
+                habs = habs.concat(tempArr);
+            }
+            else{
+                colors = colors.concat(cols3Dull);
+                habs = habs.concat(habs3);   
+            }
+            break;
+        case 4:
+            if (flip[i]){
+                tempArr = cols4Dull.slice().reverse();
+                colors = colors.concat(tempArr);
+                tempArr = habs4.slice().reverse();
+                habs = habs.concat(tempArr);
+            }
+            else{
+                colors = colors.concat(cols4Dull);
+                habs = habs.concat(habs4);   
+            }
+            break;
+        case 5:
+            if (flip[i]){
+                tempArr = cols5Dull.slice().reverse();
+                colors = colors.concat(tempArr);
+                tempArr = habs5.slice().reverse();
+                habs = habs.concat(tempArr);
+            }
+            else{
+                colors = colors.concat(cols5Dull);
+                habs = habs.concat(habs5);   
+            }
+            break;
+        case 6:
+            if (flip[i]){
+                tempArr = cols6Dull.slice().reverse();
+                colors = colors.concat(tempArr);
+                tempArr = habs6.slice().reverse();
+                habs = habs.concat(tempArr);
+            }
+            else{
+                colors = colors.concat(cols6Dull);
+                habs = habs.concat(habs6);   
+            }
+            break;
+}}
+    
+}
+
 //draws a single tile on canvas
 // input: x- start x-value; y- start y-value; w- width of tile; h- height of tile; points- points for polygon to draw, hexagons in this case; cols- colors for hexes; habs- animal habitat spaces
 function drawTile(x, y, w, h, points,cols,habs) {
@@ -1197,7 +1468,7 @@ function drawTokensReview(sol,highlightCoords,highlightCoords2){
         drawPoly(gridToPixel(gx, gy, p), createPoly(EDGES,0.8*RADIUS),"tokens");
     }
     ctxTokens.fillStyle = "#ffffff00";
-    ctxTokens.strokeStyle = "#03fc7f";
+    ctxTokens.strokeStyle = "#287327";
     ctxTokens.lineWidth = 4;
     const p = P2();
     var gx = highlightCoords[1]; 
@@ -4161,7 +4432,7 @@ function reviewTestGame(){
         temp=temp.concat(p.map);
     }
     console.log(temp);
-    drawBoard(temp);
+    drawBoardReview(temp);
 
     const player= p.players;
 
@@ -4169,6 +4440,20 @@ function reviewTestGame(){
     game.innerHTML='Number of players ='+player;
     currentGameDest= p.dest;
    
+    p1Clue = p.rules[0]
+    document.getElementById("clueP1").value = p1Clue;
+    p2Clue = p.rules[1]
+    document.getElementById("clueP2").value = p2Clue;
+    p3Clue = p.rules[2]
+    document.getElementById("clueP3").value = p3Clue;
+    if (player > 3){
+        p4Clue = p.rules[3]
+        document.getElementById("clueP4").value = p4Clue;
+    }
+    else if (player > 4){
+        p5Clue = p.rules[4]
+        document.getElementById("clueP5").value = p5Clue;
+    }
     const array= p.turns;
     var i =0;
     var tempTokensArr;
@@ -4196,7 +4481,7 @@ function nextturn(){
     const tempturn= array[turnIndex];
     tempstring="Current Player: "+tempturn.player+"\n";
     tempstring+= "Current move: "+tempturn.move+"\n";
-    tempstring+= "Current Hex: "+tempturn.hex+"\n";
+    tempstring+= "Current Hex: "+tempturn.hex+" (green border)\n";
     //drawTokens(true,tempturn.hex)
     //tempstring+="Response "+tem+"\n";
     //document.getElementById("gameInstructionsText").innerHTML=tempstring
@@ -4211,7 +4496,7 @@ function nextturn(){
             tempstring+="cube"+"\n";
             const nextTurn = array[turnIndex+1]
             elements.find(x => ((x.id[0] == nextTurn.hex[0]) &&  (x.id[1] == nextTurn.hex[1]))).pieces.push(nextTurn.tokenUpdate[0])
-            tempstring += "Player " + tempturn.player + " added a cube to " + nextTurn.hex + "\n";
+            tempstring += "Player " + tempturn.player + " added a cube to " + nextTurn.hex + " (orange border)\n";
             drawTokensReview(true,[tempturn.hex[1],tempturn.hex[0]],[nextTurn.hex[1],nextTurn.hex[0]]);
         }else{
             tempstring+="disk"+"\n";
@@ -4219,24 +4504,28 @@ function nextturn(){
         }
     }else if(tempturn.move=="search"){
         var yo="";
+        var countDisks = 0;
         for (let i = 0; i < tempturn.tokenUpdate.length; i++) {
             elements.find(x => ((x.id[0] == tempturn.hex[0]) &&  (x.id[1] == tempturn.hex[1]))).pieces.push(tempturn.tokenUpdate[i])
             if(tempturn.tokenUpdate[i].charAt(2)!="c"){
                 yo+=" Player "+tempturn.tokenUpdate[i].charAt(1)+" placed a disk,"+"\n";
-                
+                countDisks += 1;
                 
             }
             else{
                 yo+=" Player "+tempturn.tokenUpdate[i].charAt(1)+" placed a cube,"+"\n";
                 const nextTurn = array[turnIndex+1]
                 elements.find(x => ((x.id[0] == nextTurn.hex[0]) &&  (x.id[1] == nextTurn.hex[1]))).pieces.push(nextTurn.tokenUpdate[0])
-                tempstring += "Player " + tempturn.player + " added a cube to " + nextTurn.hex + "\n";
+                tempstring += "Player " + tempturn.player + " added a cube to " + nextTurn.hex + " (orange border)\n";
                 drawTokensReview(true,[tempturn.hex[1],tempturn.hex[0]],[nextTurn.hex[1],nextTurn.hex[0]]);
                 break;
             }
         }
         drawTokensReview(true,[tempturn.hex[1],tempturn.hex[0]],null);
         tempstring+="Player searched. Responses:[" +yo+"]\n";
+        if(countDisks == p.players){
+            tempstring += "Player " + tempturn.player + " has won the game."            
+        }
     }
     document.getElementById("gameInstructionsText").innerHTML= tempstring;
 }
