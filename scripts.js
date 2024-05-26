@@ -394,6 +394,28 @@ const forest = "#36ba38bf";
 const swamp = "#422282bf";
 const desert = "#dbc13dbf";
 const mount = "#8f8f8fbf";
+const displayTerrain = {
+    "#00c3d9bf" : "water",
+    "#36ba38bf" : "forest",
+    "#422282bf" : "swamp",
+    "#dbc13dbf" : "desert",
+    "#8f8f8fbf" : "mount"    
+}
+const displayHab = {
+    0 : "none",
+    1 : "bear",
+    2 : "cougar"
+}
+const displayBuild = {
+    "wt" : "White Standing Stone",
+    "ws" : "White Shack",
+    "gt" : "Green Standing Stone",
+    "gs" : "Green Shack",
+    "bt" : "Blue Standing Stone",
+    "bs" : "Blue Shack",
+    "xt" : "Black Standing Stone",
+    "xs" : "Black Shack"
+}
 const waterDull = "#00c3d97f";
 const forestDull = "#36ba387f";
 const swampDull = "#4222827f";
@@ -642,7 +664,14 @@ fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, {cache: "
 })
 .then(data => {
                 console.log(data.contents);
-                currentBoard = JSON.parse(data.contents);
+                try {
+                    currentBoard = JSON.parse(data.contents);;
+                } catch (e) {
+                    document.getElementById("hintBoxText").innerText = "Random Board could not be fetched. Please try again later.";
+                    document.getElementById("hintBox").showModal();
+                    document.getElementById("resetYes").click();
+                    throw new Error("JSON Object Not Valid")
+                }
                 jsonSetup = currentBoard.key;
                 console.log(jsonSetup);
                 if (tempStr == "normal"){
@@ -1607,16 +1636,42 @@ tokens.addEventListener('click', function(event) {
             //alert('clicked element ' + element.id);
             selectedElem = element.id;
             console.log(element.id)
-            if ((inGame) && (element.pieces.includes("p1c") ||element.pieces.includes("p2c")||element.pieces.includes("p3c")||element.pieces.includes("p4c")||element.pieces.includes("p5c"))){
-                document.getElementById("hintBoxText").innerText = "Please select a hex that does not contain a cube";
-                document.getElementById("hintBox").showModal();
+            console.log(element.pieces.includes("p1c"))
+            if ((element.pieces.includes("p1c") ||element.pieces.includes("p2c")||element.pieces.includes("p3c")||element.pieces.includes("p4c")||element.pieces.includes("p5c"))){
+                document.getElementById("hintBoxText").innerText = "Please select a hex that does not contain a cube.";
+                document.getElementById("hintBox").showModal();    
             }
-            if ((inGame) && (turnTaken == false)){
+            else if ((inGame) && (turnTaken == false)){
                 document.getElementById("takeTurn").showModal();
             }
             else {
                 selectHexItem.showModal(); //popup menu to select a piece to put on selected hex
             }
+            
+            
+        }
+    });
+
+}, false);
+
+tokens.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+    var x = event.pageX;
+    var y = event.pageY;
+    console.log(x);
+    console.log(y);
+    // Collision detection between clicked offset and element.
+    elements.forEach(function(element) {
+        if (inside_circle(x,y,element.cx,element.cy,(3**0.5/2)*RADIUS)) {
+            //alert('right clicked element ' + element.id);
+            var tempStr = "Element ID: " + element.id + "\n";
+            //tempStr = tempStr + 
+            tempStr = tempStr + "Terrain: " + displayTerrain[element.color] + "\n";
+            tempStr = tempStr + "Habitat: " + displayHab[element.hab] + "\n";
+            tempStr = tempStr + "Building: " + displayBuild[element.build] + "\n";
+            tempStr = tempStr + "Pieces: " + element.pieces + "\n";
+            document.getElementById("hintBoxText").innerText = tempStr;
+            document.getElementById("hintBox").showModal();
             
             
         }
@@ -1871,6 +1926,7 @@ document.getElementById("btnAdvMode").onclick = function() {
     };
 //OnClick for checkbox to flip tile 1 (top left)
 tileOneFlip.onclick = function() {
+    //inGame = true;
     if (tileOneFlip.checked){
         flip[0] = 1;  
     }
@@ -3234,7 +3290,7 @@ document.getElementById("passTurnBtn").onclick = function() {
     if (inGame == false){
         currentPlayer = currentPlayer + 1;
     }
-    var gameIntruction;
+    var gameInstruction = "Right Click Hex For More Information \n";
     if ((roundNum == -1)){
         switch(currentPlayer){
             case 1:
@@ -3248,7 +3304,7 @@ document.getElementById("passTurnBtn").onclick = function() {
                 document.getElementById("p3Tokens").classList.add("disabled");
                 document.getElementById("p4Tokens").classList.add("disabled");
                 document.getElementById("p5Tokens").classList.add("disabled");
-                gameInstruction = "Look at your clue, then place a cube on a space where the cryptid cannot be according to it. \n Click on End Turn below to pass to the next player";
+                gameInstruction += "Look at your clue, then place a cube on a space where the cryptid cannot be according to it. \n Click on End Turn below to pass to the next player";
                 
                 break;
             case 2:
@@ -3262,7 +3318,7 @@ document.getElementById("passTurnBtn").onclick = function() {
                 document.getElementById("p3Tokens").classList.add("disabled");
                 document.getElementById("p4Tokens").classList.add("disabled");
                 document.getElementById("p5Tokens").classList.add("disabled");
-                gameInstruction = "Look at your clue, then place a cube on a space where the cryptid cannot be according to it. \n Click on End Turn below to pass to the next player";
+                gameInstruction += "Look at your clue, then place a cube on a space where the cryptid cannot be according to it. \n Click on End Turn below to pass to the next player";
                 
                 break;
             case 3:
@@ -3276,7 +3332,7 @@ document.getElementById("passTurnBtn").onclick = function() {
                 document.getElementById("p2Tokens").classList.add("disabled");
                 document.getElementById("p4Tokens").classList.add("disabled");
                 document.getElementById("p5Tokens").classList.add("disabled");
-                gameInstruction = "Look at your clue, then place a cube on a space where the cryptid cannot be according to it. \n Click on End Turn below to pass to the next player";
+                gameInstruction += "Look at your clue, then place a cube on a space where the cryptid cannot be according to it. \n Click on End Turn below to pass to the next player";
                 
                 break;
             case 4:
@@ -3290,7 +3346,7 @@ document.getElementById("passTurnBtn").onclick = function() {
                 document.getElementById("p3Tokens").classList.add("disabled");
                 document.getElementById("p2Tokens").classList.add("disabled");
                 document.getElementById("p5Tokens").classList.add("disabled");
-                gameInstruction = "Look at your clue, then place a cube on a space where the cryptid cannot be according to it. \n Click on End Turn below to pass to the next player";
+                gameInstruction += "Look at your clue, then place a cube on a space where the cryptid cannot be according to it. \n Click on End Turn below to pass to the next player";
                 
                 break;
             case 5:
@@ -3304,7 +3360,7 @@ document.getElementById("passTurnBtn").onclick = function() {
                 document.getElementById("p3Tokens").classList.add("disabled");
                 document.getElementById("p2Tokens").classList.add("disabled");
                 document.getElementById("p4Tokens").classList.add("disabled");
-                gameInstruction = "Look at your clue, then place a cube on a space where the cryptid cannot be according to it. \n Click on End Turn below to pass to the next player";
+                gameInstruction += "Look at your clue, then place a cube on a space where the cryptid cannot be according to it. \n Click on End Turn below to pass to the next player";
                 
                 break;
         }
@@ -3322,7 +3378,7 @@ document.getElementById("passTurnBtn").onclick = function() {
                 document.getElementById("p3Tokens").classList.add("disabled");
                 document.getElementById("p4Tokens").classList.add("disabled");
                 document.getElementById("p5Tokens").classList.add("disabled");
-                gameInstruction = "Place another cube on a different space where the cryptid cannot be according to your clue. \n Click on End Turn below to pass to the next player";
+                gameInstruction += "Place another cube on a different space where the cryptid cannot be according to your clue. \n Click on End Turn below to pass to the next player";
                 
                 break;
             case 2:
@@ -3336,7 +3392,7 @@ document.getElementById("passTurnBtn").onclick = function() {
                 document.getElementById("p3Tokens").classList.add("disabled");
                 document.getElementById("p4Tokens").classList.add("disabled");
                 document.getElementById("p5Tokens").classList.add("disabled");
-                gameInstruction = "Place another cube on a different space where the cryptid cannot be according to your clue. \n Click on End Turn below to pass to the next player";
+                gameInstruction += "Place another cube on a different space where the cryptid cannot be according to your clue. \n Click on End Turn below to pass to the next player";
                 
                 break;
             case 3:
@@ -3350,7 +3406,7 @@ document.getElementById("passTurnBtn").onclick = function() {
                 document.getElementById("p2Tokens").classList.add("disabled");
                 document.getElementById("p4Tokens").classList.add("disabled");
                 document.getElementById("p5Tokens").classList.add("disabled");
-                gameInstruction = "Place another cube on a different space where the cryptid cannot be according to your clue.\n Click on End Turn below to pass to the next player";
+                gameInstruction += "Place another cube on a different space where the cryptid cannot be according to your clue.\n Click on End Turn below to pass to the next player";
                 
                 break;
             case 4:
@@ -3364,7 +3420,7 @@ document.getElementById("passTurnBtn").onclick = function() {
                 document.getElementById("p3Tokens").classList.add("disabled");
                 document.getElementById("p2Tokens").classList.add("disabled");
                 document.getElementById("p5Tokens").classList.add("disabled");
-                gameInstruction = "Place another cube on a different space where the cryptid cannot be according to your clue.\n Click on End Turn below to pass to the next player";
+                gameInstruction += "Place another cube on a different space where the cryptid cannot be according to your clue.\n Click on End Turn below to pass to the next player";
                 
                 break;
             case 5:
@@ -3378,7 +3434,7 @@ document.getElementById("passTurnBtn").onclick = function() {
                 document.getElementById("p3Tokens").classList.add("disabled");
                 document.getElementById("p2Tokens").classList.add("disabled");
                 document.getElementById("p4Tokens").classList.add("disabled");
-                gameInstruction = "Place another cube on a different space where the cryptid cannot be according to your clue. \n Click on End Turn below to pass to the next player";
+                gameInstruction += "Place another cube on a different space where the cryptid cannot be according to your clue. \n Click on End Turn below to pass to the next player";
                 
                 break;
         }    
@@ -3406,16 +3462,16 @@ document.getElementById("passTurnBtn").onclick = function() {
                 if (turnTaken == true){
                     document.getElementById("endTurn").disabled = false;
                     if (cubePlaced == true){
-                        gameInstruction = "Please place a cube on a space where the cryptid cannot be according to your clue, then press End Turn";    
+                        gameInstruction += "Please place a cube on a space where the cryptid cannot be according to your clue, then press End Turn";    
                     }
                     else{
-                        gameInstruction = "Press End Turn to pass to the next player";    
+                        gameInstruction += "Press End Turn to pass to the next player";    
                     }
                 }
                 else{
                     currentTurn = currentTurn + 1;
                     document.getElementById("endTurn").disabled = true;
-                    gameInstruction = "Select a hex to take your turn";
+                    gameInstruction += "Select a hex to take your turn";
                 }
                 
                 break;
@@ -3435,16 +3491,16 @@ document.getElementById("passTurnBtn").onclick = function() {
                 if (turnTaken == true){
                     document.getElementById("endTurn").disabled = false;
                     if (cubePlaced == true){
-                        gameInstruction = "Please place a cub on a space where the cryptid cannot be according to your clue, then press End Turn";    
+                        gameInstruction += "Please place a cube on a space where the cryptid cannot be according to your clue, then press End Turn";    
                     }
                     else{
-                        gameInstruction = "Press End Turn to pass to the next player";    
+                        gameInstruction += "Press End Turn to pass to the next player";    
                     }
                 }
                 else{
                     currentTurn = currentTurn + 1;
                     document.getElementById("endTurn").disabled = true;
-                    gameInstruction = "Select a hex to take your turn";
+                    gameInstruction += "Select a hex to take your turn";
                 }
                 
                 break; 
@@ -3464,16 +3520,16 @@ document.getElementById("passTurnBtn").onclick = function() {
                 if (turnTaken == true){
                     document.getElementById("endTurn").disabled = false;
                     if (cubePlaced == true){
-                        gameInstruction = "Please place a cub on a space where the cryptid cannot be according to your clue, then press End Turn";    
+                        gameInstruction += "Please place a cube on a space where the cryptid cannot be according to your clue, then press End Turn";    
                     }
                     else{
-                        gameInstruction = "Press End Turn to pass to the next player";    
+                        gameInstruction += "Press End Turn to pass to the next player";    
                     }
                 }
                 else{
                     currentTurn = currentTurn + 1;
                     document.getElementById("endTurn").disabled = true;
-                    gameInstruction = "Select a hex to take your turn";
+                    gameInstruction += "Select a hex to take your turn";
                 }
                 
                 break;
@@ -3493,16 +3549,16 @@ document.getElementById("passTurnBtn").onclick = function() {
                 if (turnTaken == true){
                     document.getElementById("endTurn").disabled = false;
                     if (cubePlaced == true){
-                        gameInstruction = "Please place a cub on a space where the cryptid cannot be according to your clue, then press End Turn";    
+                        gameInstruction += "Please place a cub on a space where the cryptid cannot be according to your clue, then press End Turn";    
                     }
                     else{
-                        gameInstruction = "Press End Turn to pass to the next player";    
+                        gameInstruction += "Press End Turn to pass to the next player";    
                     }
                 }
                 else{
                     currentTurn = currentTurn + 1;
                     document.getElementById("endTurn").disabled = true;
-                    gameInstruction = "Select a hex to take your turn";
+                    gameInstruction += "Select a hex to take your turn";
                 }
                 
                 break;
@@ -3522,16 +3578,16 @@ document.getElementById("passTurnBtn").onclick = function() {
                 if (turnTaken == true){
                     document.getElementById("endTurn").disabled = false;
                     if (cubePlaced == true){
-                        gameInstruction = "Please place a cub on a space where the cryptid cannot be according to your clue, then press End Turn";    
+                        gameInstruction += "Please place a cub on a space where the cryptid cannot be according to your clue, then press End Turn";    
                     }
                     else{
-                        gameInstruction = "Press End Turn to pass to the next player";    
+                        gameInstruction += "Press End Turn to pass to the next player";    
                     }
                 }
                 else{
                     currentTurn = currentTurn + 1;
                     document.getElementById("endTurn").disabled = true;
-                    gameInstruction = "Select a hex to take your turn";
+                    gameInstruction += "Select a hex to take your turn";
                 }
                 
                 break;   
